@@ -60,8 +60,8 @@
 							<span class="caret"></span>
 					</a>
 						<div class="dropdown-menu" role="menu">
-							<a href="#" class="dropdown-item">FAQ</a> <br /><a href="#"
-								class="dropdown-item">QNA</a>
+							<a href="<%=request.getContextPath() %>/faq_list.do"class="dropdown-item" target="view">FAQ</a> <br/>
+            <a href="<%=request.getContextPath() %>/qna_list.do" class="dropdown-item" target="view">Q&A</a>
 						</div></li>
 					<li><a href="#">회원광장</a></li>
 				</ul>
