@@ -68,7 +68,7 @@ public class QnaSearchAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_search.jsp");
+		forward.setPath("./board/qna_search.jsp");
 		
 		return forward;
 		

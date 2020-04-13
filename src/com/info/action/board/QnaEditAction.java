@@ -26,7 +26,7 @@ public class QnaEditAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_edit.jsp");
+		forward.setPath("./board/qna_edit.jsp");
 		return forward;
 	}
 

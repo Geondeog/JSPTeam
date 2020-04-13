@@ -68,7 +68,7 @@ public class FaqListAction implements Action {
 		// view page로 포워딩
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);        // jsp파일로 이동.
-		forward.setPath("faq_list.jsp");    // 경로 지정.
+		forward.setPath("./board/faq_list.jsp");    // 경로 지정.
 		return forward;
 	}
 }	

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap_3-3-2.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap_3-3-2.css">
 <style type="text/css">
  table{
       border-top : 1px solid #222;

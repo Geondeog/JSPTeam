@@ -24,7 +24,7 @@ public class QnaReplyAction implements Action {
 	
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_reply.jsp");
+		forward.setPath("./board/qna_reply.jsp");
 		return forward;
 	}
 

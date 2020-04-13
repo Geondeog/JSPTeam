@@ -26,7 +26,7 @@ public class QnaContAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_cont.jsp");
+		forward.setPath("./board/qna_cont.jsp");
 		
 		return forward;
 	}

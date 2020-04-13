@@ -24,7 +24,7 @@ public class QnaEditOkAction implements Action {
 		QnaDTO dto = new QnaDTO();
 		
 		// 첨부파일 
-		String saveFolder = "C:\\쌍용교육센터\\workspace(2_project)\\01_FAQ_Q&A\\WebContent\\qna_upload";
+		String saveFolder = "C:\\NCS\\workspace(jspTeam)\\00_temp\\WebContent\\qna_upload";
 		
 		int fileSize = 10 * 1024 * 1024;
 		

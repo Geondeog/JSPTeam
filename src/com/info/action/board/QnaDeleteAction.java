@@ -21,7 +21,7 @@ public class QnaDeleteAction implements Action {
 		
 	    ActionForward forward = new ActionForward();
 	    forward.setRedirect(false);
-	    forward.setPath("qna_delete.jsp");
+	    forward.setPath("./board/qna_delete.jsp");
 	    
 	    return forward;
 		

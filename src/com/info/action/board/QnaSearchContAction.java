@@ -32,7 +32,7 @@ public class QnaSearchContAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_searchCont.jsp");
+		forward.setPath("./board/qna_searchCont.jsp");
 		
 		return forward;
 

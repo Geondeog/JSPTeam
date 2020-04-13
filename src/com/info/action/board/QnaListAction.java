@@ -62,7 +62,7 @@ public class QnaListAction implements Action {
 		// view page로 포워딩
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("qna_list.jsp");
+		forward.setPath("./board/qna_list.jsp");
 		return forward;
 	}
 

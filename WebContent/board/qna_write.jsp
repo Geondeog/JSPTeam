@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap_3-3-2.css">
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script src="./js/jquery.alerts.js"></script>
-<link rel="stylesheet"href="./css/jquery.alerts.css" />
-<script src="./js/jquery.form.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap_3-3-2.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
+<link rel="stylesheet"href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
+<script src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 <script type="text/javascript">
 $(function() {
 	   $('.btn_submit').click(function() {
