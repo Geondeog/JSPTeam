@@ -28,6 +28,12 @@ public class FrontController extends HttpServlet {
 		String path = request.getContextPath();
 		String command = uri.substring(path.length() + 1);
 
+		// 1. 세션 받기
+		HttpSession session = request.getSession();
+
+		// 2. 세션에서 회원번호 애트리뷰트 꺼내기
+		int num = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
+
 		Action action = null;
 		ActionForward forword = null;
 
@@ -42,11 +48,11 @@ public class FrontController extends HttpServlet {
 		value = prop.getProperty(command);
 		System.out.println(value);
 
-		if (value != null) {		
+		if (value != null) {
 			StringTokenizer st = new StringTokenizer(value, "|");
 			String keyword = st.nextToken();
 			String nextaction = st.nextToken();
-			
+
 			if (keyword.equals("action")) {
 				try {
 					Class url = Class.forName(nextaction);
@@ -60,7 +66,7 @@ public class FrontController extends HttpServlet {
 				forword.setRedirect(false);
 				forword.setPath(nextaction);
 			}
-			
+
 		} else {
 			forword = new ActionForward();
 			forword.setRedirect(false);
