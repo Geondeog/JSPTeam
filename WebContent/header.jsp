@@ -1,5 +1,5 @@
 <%-- header.jsp --%>
-<%@ page import="com.info.model.member.MemberDAO" %>
+<%@ page import="com.info.model.member.MemberDAO"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -74,18 +74,17 @@
 					<li><a href="#">회원광장</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<c:choose>
-						<c:when test="${sessionScope.mno != null }">
-							<!-- 로그인 했을 경우  -->
-							<li><a href="<%=request.getContextPath()%>/mypage.do"
-						target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
-						</c:when>
-						<c:otherwise>
-							<!-- 로그인 안 했을 경우 -->
-							<li><a href="<%=request.getContextPath()%>/member.do"
-						target="view">로그인/회원가입</a></li>
-						</c:otherwise>
-					</c:choose>
+					<c:set var="mno" value="${sessionScope.mno}" />
+					<c:if test="${!empty mno }">
+						<!-- 로그인 했을 경우  -->
+						<li><a href="<%=request.getContextPath()%>/mypage.do"
+							target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+					</c:if>
+					<c:if test="${empty mno }">
+						<!-- 로그인 안 했을 경우 -->
+						<li><a href="<%=request.getContextPath()%>/member.do"
+							target="view">로그인/회원가입</a></li>
+					</c:if>
 
 				</ul>
 			</div>

@@ -16,7 +16,7 @@ public class LogoutAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 현재 클라이언트의 세션 끊기
 		HttpSession session = request.getSession();
-		session.removeAttribute("num"); // 세션에 들어있는 회원 번호 삭제
+		session.removeAttribute("mno"); // 세션에 들어있는 회원 번호 삭제
 		session.invalidate(); // 세션 갱신
 		PrintWriter out = response.getWriter();
 		out.print("로그아웃 성공! 잘가요~");

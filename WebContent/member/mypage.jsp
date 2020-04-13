@@ -21,7 +21,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
-<script src="<%=request.getContextPath()%>/js/login.js"></script>
 
 </head>
 <body>
@@ -140,7 +139,7 @@
 			onclick="closePost()" alt="닫기 버튼">
 	</div>
 
-	<script src="<%=request.getContextPath()%>/js/join.js"></script>
+	<script src="<%=request.getContextPath()%>/js/join.js?v=<%=System.currentTimeMillis() %>"></script>
 
 </body>
 </html>

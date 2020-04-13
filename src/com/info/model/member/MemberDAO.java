@@ -286,7 +286,7 @@ public class MemberDAO extends DAO {
 		int result = 0;
 		try {
 			con = openConn();
-			sql = "delete from member_in where info_no=?";
+			sql = "delete from member_in where m_no=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, m_no);
 			result = pstmt.executeUpdate();

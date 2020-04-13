@@ -1,3 +1,48 @@
+// mypage.jsp
+	$("#delete_btn").click(function() {
+		var no = $("#no").val();
+		$.ajax({
+			type : "post", // 데이터 전송 방식(Get, Post 방식)
+			url : "delete_member.do", // 파일 주소와 경로
+			data : {
+				"no" : no
+			},
+			// 통신이 성공한 경우 결과 값을 data라는 변수에 저장
+			success : function(data) {
+				if (data == 1) { // 존재하는 경우
+					 jAlert("삭제 성공", "SUCCESS", function() {
+				            window.top.location.href = "index.jsp";
+				        });
+				} else {
+					jAlert("삭제 실패", "ERROR");
+					return false;
+				}
+			},
+			error : function() { // 데이터 통신이 실패한 경우
+				alert("data error");
+			}
+		}); // Ajax end
+	});
+
+	$("#logout_btn").click(function() {
+		$.ajax({
+			type : "post", // 데이터 전송 방식(Get, Post 방식)
+			url : "logout.do", // 파일 주소와 경로
+			// 통신이 성공한 경우 결과 값을 data라는 변수에 저장
+			success : function(data) {
+				if (data) { // 존재하는 경우
+					 jAlert(data, "SUCCESS", function() {
+				            window.top.location.href = "index.jsp";
+				        });
+				}
+			},
+			error : function() { // 데이터 통신이 실패한 경우
+				alert("data error");
+			}
+		}); // Ajax end
+	});
+
+// join.jsp
 var flag = false;
 
 function check_pw() {
