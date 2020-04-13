@@ -1,5 +1,7 @@
 <%-- header.jsp --%>
+<%@ page import="com.info.model.member.MemberDAO" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,7 +15,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">/* Bootstrap CDN JavaScript */
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+	/* Bootstrap CDN JavaScript */
 </script>
 </head>
 
@@ -41,7 +44,9 @@
 				</button>
 				<a class="navbar-brand" href="#"> <img alt="Brand"
 					src="images/coffee_32px.png">
-				</a> <a class="navbar-brand" href="<%=request.getContextPath()%>">CAFE <i>in</i></a>
+				</a> <a class="navbar-brand" href="<%=request.getContextPath()%>">CAFE
+					<i>in</i>
+				</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,8 +54,9 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a
-						href="<%=request.getContextPath()%>/info_board.do" target="view">정보 <span
-							class="sr-only">(current)</span></a></li>
+						href="<%=request.getContextPath()%>/info_board.do" target="view">정보
+							<span class="sr-only">(current)</span>
+					</a></li>
 
 					<li><a href="<%=request.getContextPath()%>/taste_notice.do">원두추천</a></li>
 
@@ -60,13 +66,27 @@
 							<span class="caret"></span>
 					</a>
 						<div class="dropdown-menu" role="menu">
-							<a href="<%=request.getContextPath() %>/faq_list.do"class="dropdown-item" target="view">FAQ</a> <br/>
-            <a href="<%=request.getContextPath() %>/qna_list.do" class="dropdown-item" target="view">Q&A</a>
+							<a href="<%=request.getContextPath()%>/faq_list.do"
+								class="dropdown-item" target="view">FAQ</a> <br /> <a
+								href="<%=request.getContextPath()%>/qna_list.do"
+								class="dropdown-item" target="view">Q&A</a>
 						</div></li>
 					<li><a href="#">회원광장</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<%=request.getContextPath()%>/member.do" target="view">로그인/회원가입</a></li>
+					<c:choose>
+						<c:when test="${sessionScope.mno != null }">
+							<!-- 로그인 했을 경우  -->
+							<li><a href="<%=request.getContextPath()%>/mypage.do"
+						target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+						</c:when>
+						<c:otherwise>
+							<!-- 로그인 안 했을 경우 -->
+							<li><a href="<%=request.getContextPath()%>/member.do"
+						target="view">로그인/회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
