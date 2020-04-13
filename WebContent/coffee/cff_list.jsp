@@ -22,19 +22,19 @@
 	}
 	
 	.space5 {
- 		margin-top:70px; 
+ 		margin-top:70%; 
 		text-align: center;
 	}
 	
 	.space6 {
-		margin-right:10px; 
+		margin-right:10%; 
 		float: left;
 			
 	}
 	
 	.space7 {
 		text-align: center;
-		margin-top:-90px;
+		margin-top:-90%;
 		margin-left: 80%;
 	}
 	
