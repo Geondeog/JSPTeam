@@ -17,22 +17,24 @@
 </head>
 <body>
 
-	<div class="col-xs-12 col-sm-12 col-md-12 ">
+	<div class="col-xs-12 col-sm-12 col-md-12 " style="width: 90%; margin-left: 5%;">
 		<hr width="100%" class="title" />
 		<h2>${fn:toUpperCase(genre)}</h2>
 		<hr width="100%" class="title" />
 	</div>
-	<div class="col-xs-11 col-sm-11 col-md-11">
-		<div class="col-xs-2 col-md-3 col-md-offset-9 col-xs-offset-10"
-			style="margin-top: 2%; margin-bottom: 2%;">
-			<input type="button" value="글쓰기" onclick="genre_check()"
-				class="btn btn-defult center-block" />
+	<c:if test="${ mnum <= 100 }">
+		<div class="col-xs-11 col-sm-11 col-md-11">
+			<div class="col-xs-2 col-md-3 col-md-offset-9 col-xs-offset-10"
+				style="margin-top: 2%; margin-bottom: 2%;">
+				<input type="button" value="글쓰기" onclick="genre_check()"
+					class="btn btn-defult center-block" />
+			</div>
 		</div>
-	</div>
+	</c:if>
 	<div class="container">
-		<div class="row">
+		<div class="row" style="width: 90%; margin-left: 5%;">
 			<table class="col-md-10 col-lg-10 table table-hover table-line"
-				style="margin-top: 3%; margin-bottom: 4%;">
+				style="margin-top: 5%; margin-bottom: 4%;">
 				<thead>
 					<tr>
 						<th class="text-center">제목</th>

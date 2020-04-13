@@ -3,7 +3,6 @@ package com.info.action.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.print.attribute.standard.MediaSize.Other;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,8 +10,6 @@ import com.info.action.Action;
 import com.info.action.ActionForward;
 import com.info.model.member.MemberDAO;
 import com.info.model.member.MemberDTO;
-
-import oracle.net.aso.n;
 
 public class JoinAction implements Action {
 

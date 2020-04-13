@@ -107,7 +107,7 @@
 			</ul>		
 		</div>	
 		<div align="center" >
-			<hr width="50%"/> <br/>
+			<hr /> <br/>
 			<input type="button" value="전체 목록"
 					onclick="location.href='<%=request.getContextPath()%>/cff_list.do'">		
 		</div>

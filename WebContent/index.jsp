@@ -8,8 +8,7 @@
 <section id="content">
 	<div align="center">
 		<iframe name="view"
-			style="display: block; width: 100%; height: 100vh; border: 0;"
-			scrolling="no"> </iframe>
+			style="display: block; width: 100%; height: 100vh; border: 0;"> </iframe>
 	</div>
 </section>
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.info.model.info.InfoDAO;
 import com.info.model.info.InfoDTO;
@@ -16,7 +17,27 @@ public interface Action {
 	int size = 10; // 한 페이지당 보여질 게시물의 수
 	int block = 5; // 아래에 보여질 페이지의 최대 수
 
-	public default List<InfoDTO> paging(HttpServletRequest request, String info_genre, String nowPage) {
+	public default ActionForward mnum(HttpServletRequest request) {
+		// 1. 세션 받기
+		HttpSession session = request.getSession();
+
+		// 2. 세션에서 회원번호 애트리뷰트 꺼내기
+		int mnum = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
+
+		// 3. num이 없을 경우 바로 로그인 페이지로 이동 ( result : false )
+		if (mnum == -1) { // 세션이 없음(로그인을 안했음 혹은 시간 초과로 세션이 사라짐)
+			ActionForward forword = new ActionForward();
+			forword.setRedirect(true);
+			forword.setPath("member.do");
+			return forword;
+		}
+		
+		request.setAttribute("mnum", mnum);
+	
+		return null;
+	}
+
+	public default List<InfoDTO> infoPaging(HttpServletRequest request, String info_genre, String nowPage) {
 		int page = 1;
 		if (nowPage != null) {
 			page = Integer.parseInt(nowPage);

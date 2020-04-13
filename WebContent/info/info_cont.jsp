@@ -13,7 +13,8 @@
 <script src="<%=request.getContextPath()%>/js/info.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/view.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 
 </head>
 <body>
@@ -97,15 +98,17 @@
 									${dto.getInfo_file() }</a></td>
 						</tr>
 					</c:if>
-					<tr>
-						<td colspan="2" align="right"><input type="button" value="수정"
-							class="btn btn-defult "
-							onclick="location.href='<%=request.getContextPath()%>/info_write.do?no=${dto.getInfo_no()}&page=${page}&genre=${genre}'" />
-							&nbsp;<input type="button" value="삭제" class="btn btn-defult "
-							id="delete_btn" />&nbsp;<input type="button" value="목록"
-							class="btn btn-defult "
-							onclick="location.href='<%=request.getContextPath()%>/info_list.do?page=${page}&genre=${genre}'" /></td>
-					</tr>
+					<c:if test="${ mnum <= 100 }">
+						<tr>
+							<td colspan="2" align="right"><input type="button"
+								value="수정" class="btn btn-defult "
+								onclick="location.href='<%=request.getContextPath()%>/info_write.do?no=${dto.getInfo_no()}&page=${page}&genre=${genre}'" />
+								&nbsp;<input type="button" value="삭제" class="btn btn-defult "
+								id="delete_btn" />&nbsp;<input type="button" value="목록"
+								class="btn btn-defult "
+								onclick="location.href='<%=request.getContextPath()%>/info_list.do?page=${page}&genre=${genre}'" /></td>
+						</tr>
+					</c:if>
 				</table>
 			</c:if>
 			<c:if test="${empty dto}">

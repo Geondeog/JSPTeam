@@ -30,7 +30,7 @@ public class InfoContAction implements Action {
 		
 		List<ReplyDTO> repList = dao.getrep(info_no);
 
-		List<InfoDTO> list = paging(request, info_genre, nowPage);
+		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
 
 		request.setAttribute("list", list);
 		request.setAttribute("repList", repList);

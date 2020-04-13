@@ -49,6 +49,39 @@ public class MemberDAO extends DAO {
 		}
 		return dto;
 	}
+	
+	/**
+	 * 회원번호 기준으로 회원 정보 가져오기
+	 * 
+	 * @param id
+	 * @param pwd
+	 * @return 회원정보
+	 */
+	public MemberDTO getMember(int mno) {
+		MemberDTO dto = new MemberDTO();
+		try {
+			con = openConn();
+			sql = "select * from member_in where m_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mno);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setM_pwd(rs.getString("m_pwd"));
+				dto.setM_tel(rs.getString("m_tel"));
+				dto.setM_address(rs.getString("m_address"));
+				dto.setM_email(rs.getString("m_email"));
+				dto.setM_date(rs.getString("m_date"));
+				dto.setM_no(rs.getInt("m_no"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return dto;
+	}
 
 	/**
 	 * 아이디 중복 확인
@@ -187,6 +220,12 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 
+	/**
+	 * 패스워드 확인하기
+	 * @param m_id
+	 * @param m_email
+	 * @return
+	 */
 	public String pwdCheck(String m_id, String m_email) {
 		String result = null;
 		try {

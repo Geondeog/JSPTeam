@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../header.jsp">
-	<jsp:param name="title" value="Page" />
-</jsp:include>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.4.1.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/view.css" />
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5baaf50fbc8cf37b4ce0e496801f9251&libraries=services"></script>
@@ -14,7 +19,9 @@
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 
-<section id="content">
+</head>
+<body>
+
 	<div class="container">
 		<div class="col-xs-12 col-sm-12 col-md-12 ">
 			<hr width="100%" class="title" />
@@ -116,7 +123,6 @@
 			</form>
 		</div>
 	</div>
-</section>
 
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer"
@@ -129,4 +135,5 @@
 
 <script src="<%=request.getContextPath()%>/js/join.js"></script>
 
-<jsp:include page="../footer.jsp" />
+</body>
+</html>
