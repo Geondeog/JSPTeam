@@ -49,7 +49,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a
-						href="<%=request.getContextPath()%>/info_board.do">정보 <span
+						href="<%=request.getContextPath()%>/info_board.do" target="view">정보 <span
 							class="sr-only">(current)</span></a></li>
 
 					<li><a href="<%=request.getContextPath()%>/taste_notice.do">원두추천</a></li>
