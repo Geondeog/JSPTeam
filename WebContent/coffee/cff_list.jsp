@@ -84,7 +84,7 @@
 	<c:if test="${ mnum <= 100 }">
 		<div class="clear"></div>
 		<div class="space7">
-			<br /> <input type="button" value="글쓰기"
+			<br /> <input type="button" value="글쓰기" class="btn btn-defult "
 				onclick="location.href='<%=request.getContextPath() %>/cff_write.do?page=${page }'">
 		</div>
 	</c:if>
@@ -136,7 +136,7 @@
 				<option value="title">글제목</option>
 				<option value="cont">글내용</option>
 				<option value="title_cont">글제목+글내용</option>
-			</select> <input type="text" name="find_name"> <input type="submit"
+			</select> <input type="text" name="find_name"> <input type="submit" class="btn btn-defult "
 				value="검색">
 		</form>
 

@@ -116,10 +116,10 @@ hr {
 		<table style="margin-left: auto; margin-right: auto;">
 			<tr>
 				<td><c:if test="${ mnum <= 100 }">
-						<input type="button" value="수정"
+						<input type="button" value="수정" class="btn btn-defult "
 							onclick="location.href='cff_update.do?no=${dto.getCff_no() }&page=${page }'">
-						<input type="button" value="삭제" id="cff_del" />
-					</c:if> <input type="button" value="목록"
+						<input type="button" value="삭제" class="btn btn-defult " id="cff_del" />
+					</c:if> <input type="button" value="목록" class="btn btn-defult "
 					onclick="location.href='cff_list.do?page=${page }'"></td>
 			</tr>
 		</table>

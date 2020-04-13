@@ -96,8 +96,8 @@ th {
 				<table class="table" style="width: 100%;">
 					<tr>
 						<td colspan="2" align="center"><br />
-						<input type="button" value="글쓰기" id="cff_write" />&nbsp;&nbsp; <input
-							type="reset" value="취소" 
+						<input type="button" value="글쓰기" class="btn btn-defult " id="cff_write" />&nbsp;&nbsp; <input
+							type="reset" value="취소" class="btn btn-defult "
 								onclick="location.href='cff_list.do'"/></td>
 					</tr>
 				</table>

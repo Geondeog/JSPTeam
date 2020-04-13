@@ -116,8 +116,8 @@
 		<table class="space2">
 			<tr>
 				<td colspan="2" >
-					<input type="button" value="수정" id="cff_update" />&nbsp;&nbsp;
-					<input type="reset" value="취소" 
+					<input type="button" value="수정" class="btn btn-defult " id="cff_update" />&nbsp;&nbsp;
+					<input type="reset" value="취소" class="btn btn-defult "
 							onclick="location.href='cff_list.do?page=${page }'">
 				</td>
 			</tr>

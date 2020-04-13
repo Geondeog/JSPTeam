@@ -72,9 +72,9 @@
 		<hr>
 			<table style="margin-left: auto; margin-right: auto;">
 			<tr>
-			  <td><input type="button" value="검색목록" 
+			  <td><input type="button" value="검색목록"  class="btn btn-defult "
 								onclick="location.href='cff_search.do?page=${page }&find_field=${find_field }&find_name=${find_name }'">
-				  <input type="button" value="전체목록"
+				  <input type="button" value="전체목록" class="btn btn-defult "
 								onclick="location.href='cff_list.do'">	</td>
 			</tr>	
 			</table>		
