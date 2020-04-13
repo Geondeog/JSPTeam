@@ -24,11 +24,18 @@ public class QnaContAction implements Action {
 		request.setAttribute("cont", dto);
 		request.setAttribute("page", nowPage);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_cont.jsp");
-		
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_cont.jsp");
+
+			return forward;
+		}
 		return forward;
+		
 	}
 
 }
