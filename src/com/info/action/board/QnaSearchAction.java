@@ -66,10 +66,16 @@ public class QnaSearchAction implements Action {
 		request.setAttribute("find_name", find_name);
 		request.setAttribute("searchList", list);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_search.jsp");
-		
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_search.jsp");
+
+			return forward;
+		}
 		return forward;
 		
 		

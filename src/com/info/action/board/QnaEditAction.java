@@ -24,10 +24,18 @@ public class QnaEditAction implements Action {
 		request.setAttribute("edit", dto);
 		request.setAttribute("page", nowPage);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_edit.jsp");
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_edit.jsp");
+
+			return forward;
+		}
 		return forward;
+		
 	}
 
 }

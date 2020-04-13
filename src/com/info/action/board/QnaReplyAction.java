@@ -22,10 +22,19 @@ public class QnaReplyAction implements Action {
 		
 		request.setAttribute("reply", dto);
 	
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_reply.jsp");
+
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_reply.jsp");
+
+			return forward;
+		}
 		return forward;
+
 	}
 
 }

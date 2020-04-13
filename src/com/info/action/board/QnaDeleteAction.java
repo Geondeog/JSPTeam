@@ -19,12 +19,18 @@ public class QnaDeleteAction implements Action {
 		request.setAttribute("no", qna_no);
 		request.setAttribute("page", nowPage);
 		
-	    ActionForward forward = new ActionForward();
-	    forward.setRedirect(false);
-	    forward.setPath("./board/qna_delete.jsp");
-	    
-	    return forward;
-		
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_delete.jsp");
+		    
+
+			return forward;
+		}
+		return forward;
 
 	}
 

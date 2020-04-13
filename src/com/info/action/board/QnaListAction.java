@@ -59,11 +59,18 @@ public class QnaListAction implements Action {
 		request.setAttribute("endBlock",endBlock);
 		request.setAttribute("List",list);
 		
-		// view page로 포워딩
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_list.jsp");
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_list.jsp");
+
+			return forward;
+		}
 		return forward;
+		
 	}
 
 }

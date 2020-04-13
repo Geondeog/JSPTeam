@@ -30,10 +30,16 @@ public class QnaSearchContAction implements Action {
 		request.setAttribute("find_field", find_field);
 		request.setAttribute("find_name", find_name);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./board/qna_searchCont.jsp");
-		
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_searchCont.jsp");
+
+			return forward;
+		}
 		return forward;
 
 	}
