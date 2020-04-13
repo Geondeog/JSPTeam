@@ -44,7 +44,6 @@
 .clear {
 	clear: both;
 }
-
 </style>
 </head>
 <body>
@@ -73,12 +72,15 @@
 
 		</table>
 	</div>
-	<div class="clear"></div>
-	<div class="space7">
-		<br />
-		<input type="button" value="글쓰기"
-			onclick="location.href='<%=request.getContextPath() %>/cff_write.do?page=${page }'">
-	</div>
+
+	<c:if test="${ mnum <= 100 }">
+		<div class="clear"></div>
+		<div class="space7">
+			<br /> <input type="button" value="글쓰기"
+				onclick="location.href='<%=request.getContextPath() %>/cff_write.do?page=${page }'">
+		</div>
+	</c:if>
+
 
 	<div class="space5">
 
@@ -117,7 +119,7 @@
 
 
 	<div class="space8">
-		<hr>
+		<hr width="70%">
 		<br />
 		<form method="post"
 			action="<%=request.getContextPath()%>/cff_search.do">
