@@ -100,7 +100,7 @@ pre{
 		              </td>
 		           </tr>       
 	</c:if> <%-- c:if 3번째 end--%>
-
+      
        <tr >
            <td colspan="2"  class="contbtn" >
                <input type="button" value="수정" class="btn btn-defult" onclick="location.href='qna_edit.do?no=${dto.getQna_no() }&page=${page }'"  style=float:left;margin-right:10px;/> 
