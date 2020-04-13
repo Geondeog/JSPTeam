@@ -14,14 +14,20 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   
+  
+  
+  
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
 <style type="text/css">
 	.space1 {
 		font-size: 50px;
-		font-family: 굴림;
+		font-family: 굴림;       
 		font-weight: bold;
 	}
+	
+	
+	
 	
 	.space2 {
 		width: 300px;
