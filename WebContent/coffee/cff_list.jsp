@@ -35,7 +35,7 @@
 	.space7 {
 		text-align: center;
 		margin-top:-90px;
-		margin-left: 55%;
+		margin-left: 54%;
 	}
 	
 	.space8 {
@@ -113,7 +113,7 @@
 			
 	
 			<div class="space8">
-			<hr width="50%">
+			<hr >
 			<br />
 			<form method="post"
 					action="<%=request.getContextPath()%>/cff_search.do">
