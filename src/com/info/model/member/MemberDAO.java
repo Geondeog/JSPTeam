@@ -49,7 +49,7 @@ public class MemberDAO extends DAO {
 		}
 		return dto;
 	}
-	
+
 	/**
 	 * 회원번호 기준으로 회원 정보 가져오기
 	 * 
@@ -141,7 +141,7 @@ public class MemberDAO extends DAO {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 관리자 가입
 	 * 
@@ -211,7 +211,7 @@ public class MemberDAO extends DAO {
 			pstmt.setString(6, dto.getM_email());
 			pstmt.setInt(7, dto.getM_no());
 			result = pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -222,6 +222,7 @@ public class MemberDAO extends DAO {
 
 	/**
 	 * 패스워드 확인하기
+	 * 
 	 * @param m_id
 	 * @param m_email
 	 * @return
@@ -241,7 +242,7 @@ public class MemberDAO extends DAO {
 				} else {
 					result = "이메일 확인 요망!!";
 				}
-			} else {	
+			} else {
 				result = "아이디 확인 요망!!";
 			}
 		} catch (Exception e) {
@@ -272,7 +273,24 @@ public class MemberDAO extends DAO {
 			pstmt.setString(5, dto.getM_email());
 			pstmt.setInt(6, dto.getM_no());
 			result = pstmt.executeUpdate();
-			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return result;
+	}
+
+	public int delete(int m_no) {
+		int result = 0;
+		try {
+			con = openConn();
+			sql = "delete from member_in where info_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, m_no);
+			result = pstmt.executeUpdate();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
