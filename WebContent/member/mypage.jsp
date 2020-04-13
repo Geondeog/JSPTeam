@@ -121,6 +121,7 @@
 						<tr align="center">
 							<td colspan="2" align="center"><input type="button"
 								value="수정" class="btn_submit btn btn-defult "> &nbsp; <input
+								type="button" value="로그아웃" id="logout_btn" class="btn btn-defult " /> &nbsp; <input
 								type="button" value="탈퇴" id="delete_btn" class="btn btn-defult " /></td>
 						</tr>
 					</table>

@@ -124,6 +124,26 @@ $(function() {
 	});
 });
 
+$(function() {
+	$("#delete_btn").click(function() {
+		$.ajax({
+			type : "post", // 데이터 전송 방식(Get, Post 방식)
+			url : "logout.do", // 파일 주소와 경로
+			// 통신이 성공한 경우 결과 값을 data라는 변수에 저장
+			success : function(data) {
+				if (data) { // 존재하는 경우
+					 jAlert(data, "SUCCESS", function() {
+				            window.location.href = "member.do";
+				        });
+				}
+			},
+			error : function() { // 데이터 통신이 실패한 경우
+				alert("data error");
+			}
+		}); // Ajax end
+	});
+});
+
 $('.btn_submit').click(
 		function() {
 			var requiredFlag = true;
