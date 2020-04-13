@@ -95,8 +95,8 @@ public class QnaDAO {
 		try {
 			con = openConn();
 			sql = "select *"
-					+ " from (select p.*,row_number()over(order by qna_no desc) rnum from qna p) "
-					+ "where rnum >= ? and rnum <= ? order by qna_group desc, qna_step";
+					+ " from (select p.*,row_number()over(order by qna_group desc, qna_step asc) rnum from qna p) "
+					+ "where rnum >= ? and rnum <= ? ";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
