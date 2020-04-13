@@ -105,7 +105,9 @@ pre{
            <td colspan="2"  class="contbtn" >
                <input type="button" value="수정" class="btn btn-defult" onclick="location.href='qna_edit.do?no=${dto.getQna_no() }&page=${page }'"  style=float:left;margin-right:10px;/> 
                <input type="button" value="삭제" class="btn btn-defult" onclick="location.href='qna_delete.do?no=${dto.getQna_no() }&page=${page}'" style=float:left;margin-right:10px;/>
+               <c:if test="${ mnum <= 100 }">
                <input type="button" value="답변" class="btn btn-defult" onclick="location.href='qna_reply.do?no=${dto.getQna_no() }&page=${page}'" style=float:left;/>
+               </c:if>
                <input type="button" value="목록" class="btn btn-defult" onclick="location.href='qna_list.do?page=${page}'" style=float:right;>
          </tr>      
 

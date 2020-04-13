@@ -1,3 +1,4 @@
+<%@ page import="com.info.model.member.MemberDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,13 +18,7 @@ $(function() {
 		   var form = document.writeform;
 		   var requireFlag=true;
 		   
-		   if(form['writer'].value==""){
-			   jAlert("이름을 적어주세요","required");
-			   form['writer'].focus();
-			   requiredFlag = false;
-               return false;
-		   }
-		   else if(form['cont'].value==""){
+			 if(form['cont'].value==""){
 			   jAlert("내용을 적어주세요","required");
 			   form['cont'].focus();
 			   requiredFlag = false;
@@ -147,7 +142,7 @@ textarea {
 					</tr>
 					<tr>
 						<th>Name</th>
-						<td class="line"><input type="text" name="writer" required/></td>
+						<td class="line"><input type="text" name="writer" value="${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }" readonly required/></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="detail"><textarea name="cont" placeholder="문의하기 글 작성을 통해 문의를 주시면 24시간 안에 답변 도와드리겠습니다. "  required></textarea></td>
