@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.info.action.Action;
 import com.info.action.ActionForward;
 import com.info.model.DTO;
-import com.info.model.InfoDAO;
-import com.info.model.InfoDTO;
-import com.info.model.ReplyDTO;
+import com.info.model.info.InfoDAO;
+import com.info.model.info.InfoDTO;
+import com.info.model.info.ReplyDTO;
 
 public class InfoContAction implements Action {
 

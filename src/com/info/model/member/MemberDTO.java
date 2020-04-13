@@ -1,4 +1,6 @@
-package com.info.model;
+package com.info.model.member;
+
+import com.info.model.DTO;
 
 public class MemberDTO extends DTO {
 

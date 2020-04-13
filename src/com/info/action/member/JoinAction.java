@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
-import com.info.model.MemberDAO;
-import com.info.model.MemberDTO;
+import com.info.model.member.MemberDAO;
+import com.info.model.member.MemberDTO;
 
 import oracle.net.aso.n;
 

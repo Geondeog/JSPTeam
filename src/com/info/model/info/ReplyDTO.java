@@ -1,4 +1,6 @@
-package com.info.model;
+package com.info.model.info;
+
+import com.info.model.DTO;
 
 public class ReplyDTO extends DTO{
 	private int rep_num;

@@ -1,4 +1,6 @@
-package com.info.model;
+package com.info.model.info;
+
+import com.info.model.DTO;
 
 public class BeansDTO extends DTO{
 	

@@ -1,9 +1,12 @@
-package com.info.model;
+package com.info.model.info;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.info.model.DAO;
+import com.info.model.DTO;
 
 public class InfoDAO extends DAO {
 

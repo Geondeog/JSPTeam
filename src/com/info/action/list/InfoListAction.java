@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
-import com.info.model.InfoDTO;
+import com.info.model.info.InfoDTO;
 
 
 public class InfoListAction implements Action {

@@ -6,8 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.info.model.InfoDAO;
-import com.info.model.InfoDTO;
+import com.info.model.info.InfoDAO;
+import com.info.model.info.InfoDTO;
 
 public interface Action {
 

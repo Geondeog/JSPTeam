@@ -7,7 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.info.model.InfoDAO;
+
+import com.info.model.info.InfoDAO;
 
 @WebServlet("/aa")
 public class Info extends HttpServlet{

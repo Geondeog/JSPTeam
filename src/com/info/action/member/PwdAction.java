@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
-import com.info.model.MemberDAO;
+import com.info.model.member.MemberDAO;
 
 public class PwdAction implements Action {
 

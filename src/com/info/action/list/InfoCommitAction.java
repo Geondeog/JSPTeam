@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
-import com.info.model.BeansDTO;
-import com.info.model.CountryDTO;
 import com.info.model.DTO;
-import com.info.model.ExtraDTO;
-import com.info.model.InfoDAO;
-import com.info.model.InfoDTO;
+import com.info.model.info.BeansDTO;
+import com.info.model.info.CountryDTO;
+import com.info.model.info.ExtraDTO;
+import com.info.model.info.InfoDAO;
+import com.info.model.info.InfoDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
