@@ -37,7 +37,7 @@
 
 				<c:if test="${genre eq 'beans' }">
 					<div class="row" align="center">
-						<table style="margin-top: 2%; width: 60%; margin-left: 20%"
+						<table style="margin-top: 2%; width: 70%; margin-left: 15%"
 							id="contbeans"
 							class="col-xs-5 col-md-5 col-lg-5 table table-line table-condensed ">
 							<thead>
