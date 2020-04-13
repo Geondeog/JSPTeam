@@ -252,4 +252,33 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 
+	/**
+	 * 회원 정보 DB 수정하기
+	 * 
+	 * @param dto
+	 * @return 성공 시 : 1
+	 */
+	public int updateMember(MemberDTO dto) {
+		int result = 0;
+
+		try {
+			con = openConn();
+			sql = "update member_in set m_nickname=?, m_pwd=?, m_tel=?, m_address=?, m_email=? where m_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getM_nickname());
+			pstmt.setString(2, dto.getM_pwd());
+			pstmt.setString(3, dto.getM_tel());
+			pstmt.setString(4, dto.getM_address());
+			pstmt.setString(5, dto.getM_email());
+			pstmt.setInt(6, dto.getM_no());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return result;
+	}
+
 }

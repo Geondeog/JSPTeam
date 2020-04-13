@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<div class="col-xs-12 col-sm-12 col-md-12 " style="width: 90%; margin-left: 5%;">
+	<div class="col-xs-12 col-sm-12 col-md-12 " style="width: 90%; margin-left: 5%; margin-top: 5%; margin-bottom: 4%;">
 		<hr width="100%" class="title" />
 		<h2>${fn:toUpperCase(genre)}</h2>
 		<hr width="100%" class="title" />
