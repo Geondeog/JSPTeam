@@ -68,6 +68,14 @@
 
 				</c:forEach>
 			</c:if>
+			<c:if test="${empty list }">
+            <tr>
+               <td colspan="4">
+                  <h3>검색된 레코드가 없습니다.</h3>
+               </td>
+            </tr>
+         
+         </c:if>
 
 
 		</table>
