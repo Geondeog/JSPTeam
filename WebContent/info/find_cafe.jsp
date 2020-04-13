@@ -17,12 +17,12 @@
 
 </head>
 <body>
-	<div class="col-xs-10 col-sm-8 col-md-8 ">
+	<div class="col-xs-10 col-sm-8 col-md-8 " style="width: 90%; margin-left: 5%;">
 		<hr width="100%" class="title" />
 		<h2>CAFE SEARCH</h2>
 		<hr width="100%" class="title" />
 	</div>
-	<div class="map_wrap">
+	<div class="map_wrap" style="width: 90%; margin-left: 5%;">
 		<div id="map"
 			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 

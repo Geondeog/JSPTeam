@@ -28,12 +28,6 @@ public class FrontController extends HttpServlet {
 		String path = request.getContextPath();
 		String command = uri.substring(path.length() + 1);
 
-		// 1. 세션 받기
-		HttpSession session = request.getSession();
-
-		// 2. 세션에서 회원번호 애트리뷰트 꺼내기
-		int num = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
-
 		Action action = null;
 		ActionForward forword = null;
 
