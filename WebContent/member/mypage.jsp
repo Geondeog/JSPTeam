@@ -21,6 +21,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath()%>/js/login.js"></script>
 
 </head>
 <body>
