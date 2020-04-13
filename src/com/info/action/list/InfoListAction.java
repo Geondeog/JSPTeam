@@ -23,10 +23,10 @@ public class InfoListAction implements Action {
 
 		ActionForward forward = mnum(request);
 		if (forward == null) {
-			ActionForward next = new ActionForward();
-			next.setRedirect(false);
-			next.setPath("./info/list_view.jsp");
-			return next;
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./info/list_view.jsp");
+			return forward;
 		}
 		return forward;
 	}

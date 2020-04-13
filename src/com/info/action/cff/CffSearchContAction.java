@@ -19,21 +19,27 @@ public class CffSearchContAction implements Action {
 		int nowPage = Integer.parseInt(request.getParameter("page"));
 		String find_field = request.getParameter("find_field");
 		String find_name = request.getParameter("find_name");
-		
+
 		CffDAO dao = CffDAO.getInstance();
 		CffDTO dto = dao.getCont(cff_no);
-		
+
 		request.setAttribute("searchCont", dto);
 		request.setAttribute("page", nowPage);
 		request.setAttribute("find_field", find_field);
 		request.setAttribute("find_name", find_name);
-		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./coffee/cff_search_cont.jsp");
-		
+
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./coffee/cff_search_cont.jsp");
+
+			return forward;
+		}
 		return forward;
-		
+
 	}
 
 }

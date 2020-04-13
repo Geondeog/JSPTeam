@@ -33,9 +33,14 @@ public class InfoWriteAction implements Action {
 		request.setAttribute("country", coun_no);
 		request.setAttribute("genre", info_genre);
 
-		ActionForward next = new ActionForward();
-		next.setRedirect(false);
-		next.setPath("./info/info_write.jsp");
-		return next;
+		ActionForward forward = mnum(request);
+		if (forward == null) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./info/info_write.jsp");
+			return forward;
+		}
+		return forward;
+
 	}
 }

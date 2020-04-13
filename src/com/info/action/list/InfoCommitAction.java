@@ -140,40 +140,46 @@ public class InfoCommitAction implements Action {
 			break;
 		}
 
-		if (no != null) {
-			int info_no = Integer.parseInt(no);
-			int result = dao.updateDTO(info_no, info_genre, dto);
-			request.setAttribute("no", no);
-			request.setAttribute("page", nowPage);
-			if (result > 0) {
-				ActionForward forword = new ActionForward();
-				forword.setRedirect(true);
-				forword.setPath("info_cont.do?no=" + info_no + "&page=" + nowPage + "&genre=" + info_genre);
-				return forword;
-			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('게시글 수정 실패~~')");
-				out.println("history.back()");
-				out.println("</script>");
-				return null;
-			}
-		} else {
-			int result = dao.wirteCommit(info_genre, dto);
+		ActionForward forward = mnum(request);
 
-			if (result > 0) {
-				ActionForward forword = new ActionForward();
-				forword.setRedirect(true);
-				forword.setPath("info_list.do?genre=" + info_genre);
-				return forword;
+		if (forward == null) {
+			if (no != null) {
+				int info_no = Integer.parseInt(no);
+				int result = dao.updateDTO(info_no, info_genre, dto);
+				request.setAttribute("no", no);
+				request.setAttribute("page", nowPage);
+				if (result > 0) {
+					ActionForward forword = new ActionForward();
+					forword.setRedirect(true);
+					forword.setPath("info_cont.do?no=" + info_no + "&page=" + nowPage + "&genre=" + info_genre);
+					return forword;
+				} else {
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('게시글 수정 실패~~')");
+					out.println("history.back()");
+					out.println("</script>");
+					return null;
+				}
 			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('게시글 추가 실패~~')");
-				out.println("history.back()");
-				out.println("</script>");
-				return null;
+				int result = dao.wirteCommit(info_genre, dto);
+
+				if (result > 0) {
+					ActionForward forword = new ActionForward();
+					forword.setRedirect(true);
+					forword.setPath("info_list.do?genre=" + info_genre);
+					return forword;
+				} else {
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('게시글 추가 실패~~')");
+					out.println("history.back()");
+					out.println("</script>");
+					return null;
+				}
 			}
 		}
+		return forward;
+
 	}
 }

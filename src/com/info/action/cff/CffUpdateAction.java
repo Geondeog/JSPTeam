@@ -17,18 +17,25 @@ public class CffUpdateAction implements Action {
 		// 글번호에 해당하는 글을 가져와서 수정폼에 넘겨주는 클래스
 		int cff_no = Integer.parseInt(request.getParameter("no"));
 		int nowPage = Integer.parseInt(request.getParameter("page"));
-		
+
 		CffDAO dao = CffDAO.getInstance();
 		CffDTO dto = dao.getCont(cff_no);
-		
+
 		request.setAttribute("edit", dto);
 		request.setAttribute("page", nowPage);
-		
-	
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./coffee/cff_update.jsp");
+
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./coffee/cff_update.jsp");
+
+			return forward;
+		}
 		return forward;
+
 	}
 
 }

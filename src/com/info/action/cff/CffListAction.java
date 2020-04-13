@@ -64,13 +64,16 @@ public class CffListAction implements Action {
 		
 		
 		
+		ActionForward forward = mnum(request);
 		
-		
-		// view page로 포워딩
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./coffee/cff_list.jsp");
-		
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./coffee/cff_list.jsp");
+			
+			return forward;
+		}
 		return forward;
 		
 

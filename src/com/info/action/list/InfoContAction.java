@@ -23,11 +23,11 @@ public class InfoContAction implements Action {
 		InfoDAO dao = InfoDAO.getInstance();
 		dao.infoHit(info_no);
 		DTO contdto = dao.getDto(info_no, info_genre);
-		
+
 		request.setAttribute("contDTO", contdto);
 		request.setAttribute("genre", info_genre);
 		request.setAttribute("page", nowPage);
-		
+
 		List<ReplyDTO> repList = dao.getrep(info_no);
 
 		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
@@ -35,9 +35,17 @@ public class InfoContAction implements Action {
 		request.setAttribute("list", list);
 		request.setAttribute("repList", repList);
 
-		ActionForward next = new ActionForward();
-		next.setRedirect(false);
-		next.setPath("./info/info_cont.jsp");
-		return next;
+		ActionForward forward = mnum(request);
+
+		if (forward == null) {
+			// view page로 포워딩
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./info/info_cont.jsp");
+
+			return forward;
+		}
+		return forward;
+
 	}
 }
