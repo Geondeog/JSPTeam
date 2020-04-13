@@ -35,7 +35,7 @@
 	.space7 {
 		text-align: center;
 		margin-top:-90px;
-		margin-left: 80%;
+		margin-left: 55%;
 	}
 	
 	.space8 {
