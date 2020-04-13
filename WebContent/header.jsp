@@ -41,7 +41,7 @@
 				</button>
 				<a class="navbar-brand" href="#"> <img alt="Brand"
 					src="images/coffee_32px.png">
-				</a> <a class="navbar-brand" href="<%=request.getContextPath() %>">CAFE <i>in</i></a>
+				</a> <a class="navbar-brand" href="<%=request.getContextPath()%>">CAFE <i>in</i></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
