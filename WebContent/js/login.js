@@ -9,7 +9,7 @@ $(function() {
 				console.log(data);
 				if (data == 1) { // 존재하는 경우
 					jAlert("CAFE:in에 오신것을 환영합니다!", "WELCOME", function() {
-						window.location.href = "index.jsp";
+						window.top.location.href = "<%=request.getContextPath()%>";
 					});
 				} else if (data == -1) {
 					jAlert("비밀번호를 확인해 주세요.", "ERROR");

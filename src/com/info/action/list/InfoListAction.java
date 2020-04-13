@@ -18,7 +18,7 @@ public class InfoListAction implements Action {
 		String info_genre = request.getParameter("genre");
 		String nowPage = request.getParameter("page");
 		
-		List<InfoDTO> list = paging(request, info_genre, nowPage);
+		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
 		
 		request.setAttribute("list", list);
 

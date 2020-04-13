@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
@@ -41,11 +42,11 @@ public class FrontController extends HttpServlet {
 		value = prop.getProperty(command);
 		System.out.println(value);
 
-		if (value != null) {
+		if (value != null) {		
 			StringTokenizer st = new StringTokenizer(value, "|");
 			String keyword = st.nextToken();
 			String nextaction = st.nextToken();
-
+			
 			if (keyword.equals("action")) {
 				try {
 					Class url = Class.forName(nextaction);
@@ -59,6 +60,7 @@ public class FrontController extends HttpServlet {
 				forword.setRedirect(false);
 				forword.setPath(nextaction);
 			}
+			
 		} else {
 			forword = new ActionForward();
 			forword.setRedirect(false);

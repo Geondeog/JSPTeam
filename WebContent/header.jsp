@@ -66,7 +66,7 @@
 					<li><a href="#">회원광장</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<%=request.getContextPath()%>/member.do">로그인/회원가입</a></li>
+					<li><a href="<%=request.getContextPath()%>/member.do" target="view">로그인/회원가입</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
