@@ -28,7 +28,7 @@
 		console.log(iframeHeight);
 
 		document.getElementById("listview").style.height = iframeHeight;
-		
+		 
 		console.log(document.getElementById("listview").style.height);
 
 	}
