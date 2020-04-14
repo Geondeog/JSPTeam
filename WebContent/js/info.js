@@ -33,8 +33,14 @@ function closeLayer() {
 
 function searchList() {
 	var find_name = $("#find_name").val();
-	if(find_name != ""){window.location.href = "search_list.do?find_name=" + find_name;}
-	else{ jAlert("검색할 단어를 입력하세요", "ERROR"); }
+	$("#find_name").val('');
+	if(find_name != ""){ 
+		listview.location.href = "search_list.do?find_name=" + find_name;
+	}
+	else{ 
+		jAlert("검색할 단어를 입력하세요", "ERROR"); 	
+	}
+
 }
 
 // list_genre.jsp
