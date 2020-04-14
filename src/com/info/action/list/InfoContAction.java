@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
@@ -17,6 +18,13 @@ public class InfoContAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		// 1. 세션 받기
+		HttpSession session = request.getSession();
+
+		// 2. 세션에서 회원번호 애트리뷰트 꺼내기
+		int mnum = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
+
 		int info_no = Integer.parseInt(request.getParameter("no"));
 		String info_genre = request.getParameter("genre");
 		String nowPage = request.getParameter("page");
@@ -28,7 +36,7 @@ public class InfoContAction implements Action {
 		request.setAttribute("genre", info_genre);
 		request.setAttribute("page", nowPage);
 
-		List<ReplyDTO> repList = dao.getrep(info_no);
+		List<ReplyDTO> repList = dao.getrep(info_no, mnum);
 
 		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
 

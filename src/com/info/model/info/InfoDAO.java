@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.info.model.DAO;
 import com.info.model.DTO;
+import com.info.model.member.MemberDAO;
 
 public class InfoDAO extends DAO {
 
@@ -476,13 +477,14 @@ public class InfoDAO extends DAO {
 	/**
 	 * 해당 게시글의 댓글 가져오기
 	 * @param info_no
+	 * @param mnum 
 	 * @return 댓글 리스트
 	 */
-	public List<ReplyDTO> getrep(int info_no) {
+	public List<ReplyDTO> getrep(int info_no, int mnum) {
 		ArrayList<ReplyDTO> list = new ArrayList<>();
 		try {
 			con = openConn();
-			String sql = "SELECT *  FROM (SELECT * FROM info_reply WHERE info_no=?) START WITH parentnum = 0 CONNECT BY PRIOR  rep_num = parentnum";
+			sql = "SELECT *  FROM (SELECT * FROM info_reply WHERE info_no=?) START WITH parentnum = 0 CONNECT BY PRIOR  rep_num = parentnum";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, info_no);
 			rs = pstmt.executeQuery();
@@ -491,7 +493,7 @@ public class InfoDAO extends DAO {
 				dto.setRep_num(rs.getInt("rep_num"));
 				dto.setInfo_no(rs.getInt("Info_no"));
 				dto.setCont(rs.getString("cont"));
-				dto.setWriter("");
+				dto.setWriter(MemberDAO.getInstance().getMember(mnum).getM_nickname());
 				dto.setWriterNum(rs.getInt("writerNum"));
 				dto.setDep(rs.getInt("dep"));
 				dto.setParentNum(rs.getInt("parentNum"));
@@ -504,6 +506,33 @@ public class InfoDAO extends DAO {
 			closeConn(con, pstmt, rs);
 		}
 		return list;
+	}
+
+	public int insert(ReplyDTO dto) {
+		int result = 0;
+		try {
+			con = openConn();
+			sql = "INSERT INTO info_reply VALUES(" + 
+					"rep_seq.NEXTVAL," + 
+					"?," + // 게시글 번호
+					"?," + // 댓글 내용
+					"?," + // 댓글쓴이 번호
+					"?," + // 이 댓글의 깊이 
+					"?," + // 부모 댓글 번호 
+					"SYSDATE)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getInfo_no());
+			pstmt.setString(2, dto.getCont());
+			pstmt.setInt(3, dto.getWriterNum());
+			pstmt.setInt(4, dto.getDep());
+			pstmt.setInt(5, dto.getParentNum());
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return result;
 	}
 
 }

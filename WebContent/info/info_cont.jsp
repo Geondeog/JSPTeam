@@ -138,13 +138,13 @@
 								onclick="showForm('myForm_${rep.getRep_num() }')" value="답글달기"
 								class="button" style="width: 100px">
 							<div id="myForm_${rep.getRep_num() }" style="display: None;">
-								<form action="writeReply.brd" method="post">
+								<form action="<%=request.getContextPath()%>/writeReply.do" method="post">
 									<table style='width: 600px'>
 										<tr style="height: 100px">
 											<th>${nickname }</th>
 											<td><textarea style="width: 100%; height: 100px"
 													name="content" placeholder="악플 나빠여" required="required"></textarea>
-											<td><input type="submit" value="저장"
+											<td><input type="button" value="저장" id="rep_submit"
 												class="btn btn-defult center-block" /></td>
 										</tr>
 									</table>
@@ -177,7 +177,7 @@
 						<th>${nickname }</th>
 						<td><textarea style="width: 100%; height: 100px"
 								name="content" placeholder="악플 나빠여" required="required"></textarea>
-						<td><input type="submit" value="저장"
+						<td><input type="button" value="저장" id="rep_submit"
 							class="btn btn-defult center-block" /></td>
 					</tr>
 				</table>

@@ -80,3 +80,28 @@ $(function() {
 		}); // Ajax end
 	});
 });
+
+$(function() {
+	$('.rep_submit').click(function() {
+		
+		$("form").ajaxForm({
+			type : "post", 
+			url : "writeReply.do",
+			success : function(data) {
+				console.log(data);
+				if (data == 1) { // 존재하는 경우
+					jAlert("댓글 감사합니다~", "SUCCESS", function() {
+						window.top.location.reload();
+					});
+				} else {
+					jAlert("작성 실패", "ERROR");
+				}
+			},
+			error : function() { // 데이터 통신이 실패한 경우
+				alert("data error");
+			}
+		});$("form").submit();
+		
+	});
+
+});
