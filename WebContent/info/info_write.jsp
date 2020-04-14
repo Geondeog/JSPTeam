@@ -31,7 +31,8 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/write.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 
 </head>
 <body>
@@ -163,8 +164,9 @@
 					</c:if>
 					<tr>
 						<th>주소</th>
-						<td><input type="text" name="coun_add"
-							value="${dto.getCoun_add() }" /></td>
+						<td><c:if test="${!empty dto }">
+								<input type="hidden" name="conu_no" value="${dto.getCoun_no()}">
+							</c:if><input type="text" name="coun_add" value="${dto.getCoun_add() }" /></td>
 					</tr>
 				</c:if>
 				<%-- 추출방식 게시글 등록 --%>

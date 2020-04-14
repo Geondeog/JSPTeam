@@ -97,16 +97,21 @@ public class InfoCommitAction implements Action {
 			StringTokenizer st = new StringTokenizer(coun_val, "|");
 			int coun_num = Integer.parseInt(st.nextToken());
 			String coun_7 = st.nextToken();
+			String conu_no = req.getParameter("conu_no");
+			int counNO ;
 
 			dto = new CountryDTO();
-			Map<String, Integer> coun = dao.getcounCount();
-			int num = 1;
-			if (coun.get(coun_7) != null) {
-				num += coun.get(coun_7);
+
+			if (conu_no != null) {
+				counNO = Integer.parseInt(conu_no);
+			} else {
+				Map<String, Integer> coun = dao.getcounCount();
+				int num = 1;
+				if (coun.get(coun_7) != null) {
+					num += coun.get(coun_7);
+				}
+				counNO = (coun_num * 100) + num;
 			}
-
-			int counNO = (coun_num * 100) + num;
-
 
 			((CountryDTO) dto).setCoun_no(counNO);
 			((CountryDTO) dto).setCoun_7(coun_7);
