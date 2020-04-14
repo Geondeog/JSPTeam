@@ -139,9 +139,6 @@ insert into beans values(info_seq.nextval, 306, 4, 5, 3, 3, 4, 'AA', '탄자니�
 
 select * from (select p.*, row_number() over(order by info_no desc) rnum from info_v p where info_genre like '%beans%') where rnum between 1 and 3;
 
-commit;
-
-
 
 -- 댓글 구현 테이블 
 CREATE TABLE info_reply (
@@ -176,20 +173,8 @@ select max(m_no) from member_in where m_no > 100;
 
 insert into member_in values('mrg_1','백서진','0000','010','서울','aaa@aaa','20/04/01',1);
 insert into member_in values('hong','홍길동','1234','010','대전','bbb@bbb','20/04/04',101);
+insert into member_in values('leess','이순신','1234','010','대구','ccc@ccc','20/04/05',102);
 
--- qna 테이블
 
-create table qna (
-     qna_no number(5)  primary key,                        -- 글번호
-     qna_title varchar2 (500) not null,                       -- 글제목
-     qna_writer varchar2 (10) not null,                       -- 작성자
-     qna_cont varchar2  (1000) not null,                     -- 내용
-     qna_pwd varchar2 (20)  not null,                         -- 비밀번호
-     qna_file varchar2 (500),                                     		-- 파일 
-     qna_date date,                                                     	 -- 업로드 날짜
-     qna_group number(4),                                            -- 게시글 그룹
-     qna_step number(4),                                               -- 게시글 답변 단계
-     qna_indent number(4),                                            -- 답변글 들여쓰기
-     qna_modify number(4) default 0                          --수정됨 표시기능
-                 
-);
+commit;
+
