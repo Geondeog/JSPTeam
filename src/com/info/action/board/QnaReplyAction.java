@@ -16,11 +16,13 @@ public class QnaReplyAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int qna_no = Integer.parseInt(request.getParameter("no"));
+		int nowPage = Integer.parseInt(request.getParameter("page"));
 		
 		QnaDAO dao = QnaDAO.getInstance();
 		QnaDTO dto = dao.getQnaCont(qna_no);
 		
 		request.setAttribute("reply", dto);
+		request.setAttribute("page",nowPage);
 	
 
 		ActionForward forward = mnum(request);

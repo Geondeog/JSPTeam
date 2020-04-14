@@ -66,6 +66,12 @@ border-bottom:1px solid black;
    width:100px;
 }
 
+.modi{
+    font-size:12px;
+     width:0px;
+     color:#ff1493;
+}
+
 table{
   border-bottom:none;
   border-left:none;
@@ -87,9 +93,9 @@ h1 {
       <h1>Q&A</h1>
      </div> 
    
-       <table border="0"  cellspacing="0" width="80%">
+       <table border="0"  cellspacing="0" width="75%">
             <tr >
-                <td >No</td>    <td >Subject</td>  <td >Name</td> <td >Date</td> 
+                <td >No</td>    <td colspan="2">Subject</td>  <td >Name</td> <td >Date</td> 
             </tr>
             <c:set var="list" value="${List }" />
             
@@ -103,6 +109,12 @@ h1 {
 	                        </c:forEach>
 	                        <a href ="qna_cont.do?no=${dto.getQna_no() }&page=${page}"> ${dto.getQna_title() }</a>
 	                     </td>
+	                     <c:if test="${dto.getQna_modify()==1 }" >
+	                      <td class="modi">수정됨</td>
+	                      </c:if>
+	                      <c:if test="${dto.getQna_modify()!=1}" >
+	                      <td> </td>
+	                      </c:if>
 	                      <td> ${dto.getQna_writer()} </td>
 	                      <td class="date">${dto.getQna_date()} </td>
 	                  </tr>    
@@ -110,14 +122,14 @@ h1 {
               </c:if>
               <c:if test ="${empty list }">
 	              <tr>
-	                   <td colspan="4" align="center">
+	                   <td colspan="5" align="center">
 	                      <h3>검색된 레코드가 없습니다.</h3>
 	                    </td>
 	               </tr>
 	           </c:if>    
                      
                <tr >
-                   <td colspan="4" class="array2">
+                   <td colspan="5" class="array2">
                          <input type="button" class="btn btn-defult"  value="문의하기"  onclick="location.href='qna_write.do'" />
                    </td>
                </tr>        

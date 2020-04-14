@@ -12,11 +12,13 @@ public class QnaDTO {
 	private int qna_group;
 	private int qna_step;
 	private int qna_indent;
+	private int qna_modify;
 	
 	
 	
 	
 	
+
 	public int getQna_no() {
 		return qna_no;
 	}
@@ -76,6 +78,12 @@ public class QnaDTO {
 	}
 	public void setQna_indent(int qna_indent) {
 		this.qna_indent = qna_indent;
+	}
+	public int getQna_modify() {
+		return qna_modify;
+	}
+	public void setQna_modify(int qna_modify) {
+		this.qna_modify = qna_modify;
 	}
 
 }

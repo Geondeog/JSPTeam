@@ -114,6 +114,7 @@ public class QnaDAO {
 				dto.setQna_group(rs.getInt("qna_group"));
 				dto.setQna_step(rs.getInt("qna_step"));
 				dto.setQna_indent(rs.getInt("qna_indent"));
+				dto.setQna_modify(rs.getInt("qna_modify"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -125,6 +126,7 @@ public class QnaDAO {
 	}
 
 
+	// 검색하고난 후의 상세내역 
 	public QnaDTO getQnaCont(int qna_no) {
 		QnaDTO dto = new QnaDTO();
 		
@@ -146,6 +148,7 @@ public class QnaDAO {
 				dto.setQna_group(rs.getInt("qna_group"));
 				dto.setQna_step(rs.getInt("qna_step"));
 				dto.setQna_indent (rs.getInt("qna_indent"));
+				dto.setQna_modify(rs.getInt("qna_modify"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -228,7 +231,7 @@ public class QnaDAO {
 	
 	try {
 		con=openConn();
-		sql="insert into qna values(qna_seq.nextval,?,?,?,?,?,sysdate,qna_seq.currval,0,0)";
+		sql="insert into qna values(qna_seq.nextval,?,?,?,?,?,sysdate,qna_seq.currval,0,0,0)";
 		pstmt=con.prepareStatement(sql);
 		pstmt.setString(1,dto.getQna_title());
 		pstmt.setString(2, dto.getQna_writer());
@@ -244,12 +247,14 @@ public class QnaDAO {
 	return result;	
 	}  // insertQna() 메서드 end
 
+	
+	// 답변하기
 	public int replyQna(QnaDTO dto) {
 		int result=0;
 		
 		try {
 			con=openConn();
-			sql="insert into qna values(qna_seq.nextval,?,?,?,?,?,sysdate,?,?,?)";
+			sql="insert into qna values(qna_seq.nextval,?,?,?,?,?,sysdate,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,dto.getQna_title());
 			pstmt.setString(2, dto.getQna_writer());
@@ -259,6 +264,7 @@ public class QnaDAO {
 			pstmt.setInt(6, dto.getQna_group());
 			pstmt.setInt(7, dto.getQna_step()+1);
 			pstmt.setInt(8, dto.getQna_indent()+1);
+			pstmt.setInt(9, dto.getQna_modify());
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -267,6 +273,7 @@ public class QnaDAO {
 		}
 		return result;	
 		}  // insertQna() 메서드 end
+	
 	
     // 최신답글을 위쪽으로,,,,, 해주기 위한 메서드
 	public void replyUpdate(int qna_group, int qna_step) {
@@ -295,7 +302,7 @@ public class QnaDAO {
      con = openConn();
      if(find_field.equals("title")) {    
 	    try {
-	 	    sql="select count(*) from sql where sql_title like ?";
+	 	    sql="select count(*) from qna where qna_title like ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,"%" + find_name + "%");
 			rs = pstmt.executeQuery();
@@ -386,6 +393,7 @@ public class QnaDAO {
 					dto.setQna_group(rs.getInt("qna_group"));
 					dto.setQna_step(rs.getInt("qna_step"));
 					dto.setQna_indent(rs.getInt("qna_indent"));
+					dto.setQna_modify(rs.getInt("qna_modify"));
 					list.add(dto);
 					
 				}
@@ -416,6 +424,7 @@ public class QnaDAO {
 					dto.setQna_group(rs.getInt("qna_group"));
 					dto.setQna_step(rs.getInt("qna_step"));
 					dto.setQna_indent(rs.getInt("qna_indent"));
+					dto.setQna_modify(rs.getInt("qna_modify"));
 					list.add(dto);
 					
 				}
@@ -446,6 +455,7 @@ public class QnaDAO {
 					dto.setQna_group(rs.getInt("qna_group"));
 					dto.setQna_step(rs.getInt("qna_step"));
 					dto.setQna_indent(rs.getInt("qna_indent"));
+					dto.setQna_modify(rs.getInt("qna_modify"));
 					list.add(dto);
 					
 				}
@@ -476,6 +486,7 @@ public class QnaDAO {
 					dto.setQna_group(rs.getInt("qna_group"));
 					dto.setQna_step(rs.getInt("qna_step"));
 					dto.setQna_indent(rs.getInt("qna_indent"));
+					dto.setQna_modify(rs.getInt("qna_modify"));
 					list.add(dto);
 					
 				}
@@ -489,7 +500,23 @@ public class QnaDAO {
 		return list;
 	}  //searchQnaList()메서드 end
 
-
+	// 수정되면 옆에 수정됨. 뜨게 하는 메서드
+		public void modifyok(int qna_no) {
+	      
+			try {
+				con=openConn();
+				sql="update qna set qna_modify=1 where qna_no=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, qna_no);
+				pstmt.executeUpdate();
+				rs=pstmt.executeQuery();
+				con.commit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+	  			closeConn(con, pstmt, rs);
+	  		}
+		} // modifyok() 메서드 end
 
 	
 }

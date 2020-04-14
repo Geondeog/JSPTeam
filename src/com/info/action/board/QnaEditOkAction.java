@@ -108,6 +108,11 @@ public class QnaEditOkAction implements Action {
 			out.println("</script>");
 		}
 */
+		
+		if(res>0) {
+			dao.modifyok(qna_no);
+		}
+		
 	   out.println(res);
 	   out.close();
 		return null;

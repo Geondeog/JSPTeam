@@ -46,7 +46,7 @@ public class QnaReplyOkAction implements Action {
 				int qna_group=Integer.parseInt(multi.getParameter("qna_group"));
 				int qna_step=Integer.parseInt(multi.getParameter("qna_step"));
 				int qna_indent=Integer.parseInt(multi.getParameter("qna_indent"));
-				
+				int qna_modify=Integer.parseInt(multi.getParameter("qna_modify"));
 				
 				// 첨부파일이 존재하는 경우
 						if(qna_file != null) {
@@ -81,6 +81,8 @@ public class QnaReplyOkAction implements Action {
 						dto.setQna_group(qna_group);
 						dto.setQna_step(qna_step);
 						dto.setQna_indent(qna_indent);
+						dto.setQna_modify(qna_modify);
+						
 						
 						QnaDAO dao = QnaDAO.getInstance();
 						dao.replyUpdate(qna_group,qna_step);
