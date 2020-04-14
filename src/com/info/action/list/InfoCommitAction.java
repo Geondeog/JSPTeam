@@ -100,15 +100,13 @@ public class InfoCommitAction implements Action {
 
 			dto = new CountryDTO();
 			Map<String, Integer> coun = dao.getcounCount();
-			System.out.println(coun);
 			int num = 1;
 			if (coun.get(coun_7) != null) {
 				num += coun.get(coun_7);
 			}
-			System.out.println(num);
 
 			int counNO = (coun_num * 100) + num;
-			System.out.println(counNO);
+
 
 			((CountryDTO) dto).setCoun_no(counNO);
 			((CountryDTO) dto).setCoun_7(coun_7);
