@@ -3,7 +3,7 @@ create table info(
  info_no number(10) primary key,
  info_genre varchar2(10) not null,
  info_title varchar2(100),
- info_cont varchar2(3000),
+ info_cont clob,
  info_hit number(5) default 0,
  info_date date,
  info_file varchar2(3000)
@@ -15,18 +15,15 @@ start with 1
 increment by 1
 nocache;
 
-select info_seq.currval as info_no from dual;
-
-delete from info where info_no=50;
 
 -- 게시물 View
 create view info_v as 
-select g.info_no, i.info_genre, g.info_title, g.info_cont, i.info_hit, i.info_date, g.info_file
+select g.info_no, i.info_genre, g.info_title, i.info_hit, i.info_date
 from info i,
-(select info_no, info_title, info_cont, info_file from info union
-select info_no, info_title, info_cont, info_file from beans union
-select info_no, info_title, info_cont, info_file from country union
-select info_no, info_title, info_cont, info_file from extra) g
+(select info_no, info_title, info_file from info union
+select info_no, info_title, info_file from beans union
+select info_no, info_title, info_file from country union
+select info_no, info_title, info_file from extra) g
 where i.info_no=g.info_no and g.info_title is not null
 order by i.info_no desc;
 
@@ -40,7 +37,7 @@ create table beans(
  beans_bitter number(10) not null,
  beans_body number(10) not null,
  info_title varchar2(100) not null,
- info_cont varchar2(3000) not null,
+ info_cont clob not null,
  info_file varchar2(3000)
 );
 
@@ -62,18 +59,17 @@ create table country(
  coun_7 varchar2(30) not null,
  coun_add varchar2(300), 
  info_title varchar2(100) not null,
- info_cont varchar2(3000) not null,
+ info_cont clob not null,
  info_file varchar2(3000)
 );
 
-select coun_7, count(*) count from country group by coun_7;
 
 -- 추출방식테이블
 create table extra(
  info_no number(10) primary key,
  extra_genre varchar2(30) not null,
  info_title varchar2(100) not null,
- info_cont varchar2(3000) not null,
+ info_cont clob not null,
  info_file varchar2(3000)
 );
 
@@ -81,7 +77,7 @@ create table extra(
 create table variat(
  info_no number(10) primary key,
  info_title varchar2(100) not null,
- info_cont varchar2(3000) not null,
+ info_cont clob not null,
  info_file varchar2(3000)
 );
 
@@ -89,7 +85,7 @@ create table variat(
 create table blend(
  info_no number(10) primary key,
  info_title varchar2(100) not null,
- info_cont varchar2(3000) not null,
+ info_cont clob not null,
  info_file varchar2(3000)
 );
 
@@ -141,6 +137,7 @@ insert into beans values(info_seq.nextval, 304, 4, 5, 3, 3, 4, 'AA+', '짐바브
 insert into beans values(info_seq.nextval, 305, 4, 5, 3, 3, 4, 'AA', '케냐 AA', '');
 insert into beans values(info_seq.nextval, 306, 4, 5, 3, 3, 4, 'AA', '탄자니아 AA', '');
 
+select * from (select p.*, row_number() over(order by info_no desc) rnum from info_v p where info_genre like '%beans%') where rnum between 1 and 3;
 
 commit;
 
@@ -179,3 +176,20 @@ select max(m_no) from member_in where m_no > 100;
 
 insert into member_in values('mrg_1','백서진','0000','010','서울','aaa@aaa','20/04/01',1);
 insert into member_in values('hong','홍길동','1234','010','대전','bbb@bbb','20/04/04',101);
+
+-- qna 테이블
+
+create table qna (
+     qna_no number(5)  primary key,                        -- 글번호
+     qna_title varchar2 (500) not null,                       -- 글제목
+     qna_writer varchar2 (10) not null,                       -- 작성자
+     qna_cont varchar2  (1000) not null,                     -- 내용
+     qna_pwd varchar2 (20)  not null,                         -- 비밀번호
+     qna_file varchar2 (500),                                     		-- 파일 
+     qna_date date,                                                     	 -- 업로드 날짜
+     qna_group number(4),                                            -- 게시글 그룹
+     qna_step number(4),                                               -- 게시글 답변 단계
+     qna_indent number(4),                                            -- 답변글 들여쓰기
+     qna_modify number(4) default 0                          --수정됨 표시기능
+                 
+);
