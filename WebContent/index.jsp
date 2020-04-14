@@ -5,10 +5,10 @@
 	<jsp:param name="title" value="Page" />
 </jsp:include>
 
-<section id="content">
+<section id="view">
 	<div align="center">
-		<iframe name="view"
-			style="display: block; width: 100%; height: 100vh; border: 0;"> </iframe>
+		<iframe name="view" id="view"
+			style="display: block; width: 100%; border: 0; scrolling: no;" onload="autoResize()"> </iframe>
 	</div>
 </section>
 

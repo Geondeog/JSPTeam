@@ -18,6 +18,16 @@
 <script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
+	
+	<script type="text/javascript">
+	//iframe resize
+	function autoResize(){
+		var iframeHeight = listview.document.body.scrollHeight;
+
+		listview.height = iframeHeight + 20;
+
+	}
+</script>
 
 </head>
 <body>
@@ -54,8 +64,8 @@
 		</div>
 
 		<div class="col-sm-10">
-			<iframe src="<%=request.getContextPath()%>/info.do" name="listview"
-				style="display: block; width: 100%; height: 100vh; border: 0; overflow: hidden; scrolling: no;">
+			<iframe src="<%=request.getContextPath()%>/info.do" name="listview" id="listview"
+				style="display: block; width: 100%; border: 0; scrolling: no;" onload="autoResize()">
 			</iframe>
 		</div>
 	</div>
