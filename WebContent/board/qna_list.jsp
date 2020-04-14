@@ -49,7 +49,7 @@ border-bottom:1px solid black;
     text-align:left;
     padding-left:20px;
     word-break:break-all;
-    width:600px;
+    width:700px;
 }
 
 .array2{
