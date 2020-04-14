@@ -99,7 +99,7 @@ h1 {
                         <td >${dto.getQna_no()} </td>
                         <td  class="array">
 	                        <c:forEach begin="1" end="${dto.getQna_indent() }">&nbsp;
-	                               <img src="images/답변아이콘.png">
+	                               <img src="<%=request.getContextPath() %>/images/답변아이콘.png">
 	                        </c:forEach>
 	                        <a href ="qna_cont.do?no=${dto.getQna_no() }&page=${page}"> ${dto.getQna_title() }</a>
 	                     </td>

@@ -24,8 +24,9 @@
 			<div class="clear"></div>
 			<c:set var="genre" value="${genre}" />
 			<c:set var="dto" value="${contDTO}" />
-			<input type="hidden" id="no" value="${dto.getInfo_no()}"> <input
-				type="hidden" id="genre" value="${genre}">
+			<c:set var="info_no" value="${dto.getInfo_no()}" />
+			<input type="hidden" name="no" value="${info_no}"> <input
+				type="hidden" name="genre" value="${genre}">
 
 			<c:if test="${!empty dto}">
 
@@ -116,136 +117,144 @@
 					<h3>검색된 레코드가 없습니다.</h3>
 				</div>
 			</c:if>
-
-			<c:if test="${!empty repList }">
-				<script>
-					function showForm(name) {
-						var x = document.getElementById(name);
-						if (x.style.display === "none") {
-							x.style.display = "block";
-						} else {
-							x.style.display = "none";
+			<div>
+				<c:if test="${!empty repList }">
+					<script>
+						function showForm(name) {
+							var x = document.getElementById(name);
+							if (x.style.display === "none") {
+								x.style.display = "block";
+							} else {
+								x.style.display = "none";
+							}
 						}
-					}
-				</script>
-				<c:forEach var="rep" items="${repList }">
-					<div
-						style="margin-left: ${rep.getDep() * 50 }px;width:600px;border:1px solid black;text-align:left">
-						ㄴ>${rep.getWriter() } : ${rep.getCont() } (${rep.getRegdate() })
-						<c:if test="${nickname != null}">
-							<!-- 로그인 중이면 답글 달기 가능 -->
-							<input type="button"
-								onclick="showForm('myForm_${rep.getRep_num() }')" value="답글달기"
-								class="button" style="width: 100px">
-							<div id="myForm_${rep.getRep_num() }" style="display: None;">
-								<form action="<%=request.getContextPath()%>/writeReply.do" method="post">
-									<table style='width: 600px'>
-										<tr style="height: 100px">
-											<th>${nickname }</th>
-											<td><textarea style="width: 100%; height: 100px"
-													name="content" placeholder="악플 나빠여" required="required"></textarea>
-											<td><input type="button" value="저장" id="rep_submit"
-												class="btn btn-defult center-block" /></td>
-										</tr>
-									</table>
-									<!-- 이 댓글이 부모 댓글이 될 것임 -->
-									<input type="hidden" name="parentNum"
-										value="${rep.getRep_num() }">
-									<!-- 이 댓글의 깊이 (현재 댓글의 대댓글이므로 깊이 +1-->
-									<input type="hidden" name="depth" value="${rep.getDep() + 1 }">
-									<!-- 이 댓글의 게시글 번호 -->
-									<input type="hidden" name="boardNum"
-										value="${rep.getInfo_no() }">
+					</script>
+					<c:forEach var="rep" items="${repList }">
+						<div style="margin-left: 5%">
+							<div
+								style="width: 100%; text-align: left; margin-top: 2%; margin-left: ${rep.getDep() * 50 }px;">
+								<label><img
+									src="<%=request.getContextPath()%>/images/답변아이콘.png">${rep.getWriter() }
+									: ${rep.getCont() } (${rep.getRegdate() })</label>
+								<c:if test="${nickname != null}">
+									<!-- 로그인 중이면 답글 달기 가능 -->
+									<input type="button" onclick="showForm('myForm_${info_no}')"
+										value="답글달기" class="btn btn-defult" style="width: 100px">
+									<div id="myForm_${info_no}" style="display: None;">
+										<form action="<%=request.getContextPath()%>/writeReply.do"
+											method="post">
+											<input type="hidden" name="genre" value="${genre}"> <input
+												type="hidden" name="page" value="${page}">
+											<table style='width: 600px'>
+												<tr style="height: 100px">
+													<th>${nickname }</th>
+													<td><textarea style="width: 100%; height: 100px"
+															name="content" placeholder="악플 나빠여" required="required"></textarea>
+													<td><input type="submit" value="저장"
+														class="btn btn-defult center-block" /></td>
+												</tr>
+											</table>
+											<!-- 이 댓글이 부모 댓글이 될 것임 -->
+											<input type="hidden" name="parentNum"
+												value="${rep.getRep_num() }">
+											<!-- 이 댓글의 깊이 (현재 댓글의 대댓글이므로 깊이 +1-->
+											<input type="hidden" name="depth"
+												value="${rep.getDep() + 1 }">
+											<!-- 이 댓글의 게시글 번호 -->
+											<input type="hidden" name="boardNum" value="${info_no}">
 
-								</form>
+										</form>
+									</div>
+								</c:if>
 							</div>
-						</c:if>
-					</div>
-				</c:forEach>
+						</div>
+					</c:forEach>
 
-			</c:if>
-			<form action="<%=request.getContextPath()%>/writeReply.do"
-				method="post">
-				<!-- 부모 댓글은 없음 -->
-				<input type="hidden" name="parentNum" value="0">
-				<!-- 이 댓글의 깊이 없음-->
-				<input type="hidden" name="depth" value="0">
-				<!-- 이 댓글의 게시글 번호 -->
-				<input type="hidden" name="boardNum" value="${dto.getInfo_no() }">
-				<table style='width: 600px'>
-					<tr style="height: 100px">
-						<th>${nickname }</th>
-						<td><textarea style="width: 100%; height: 100px"
-								name="content" placeholder="악플 나빠여" required="required"></textarea>
-						<td><input type="button" value="저장" id="rep_submit"
-							class="btn btn-defult center-block" /></td>
+				</c:if>
+				<div style="width: 100%; text-align: left; margin-top: 2%;">
+					<form action="<%=request.getContextPath()%>/writeReply.do"
+						method="post">
+						<input type="hidden" name="genre" value="${genre}"> <input
+							type="hidden" name="page" value="${page}">
+						<!-- 부모 댓글은 없음 -->
+						<input type="hidden" name="parentNum" value="0">
+						<!-- 이 댓글의 깊이 없음-->
+						<input type="hidden" name="depth" value="0">
+						<!-- 이 댓글의 게시글 번호 -->
+						<input type="hidden" name="boardNum" value="${info_no}">
+						<table style='width: 60%'>
+							<tr>
+								<th>${nickname }</th>
+								<td><textarea style="width: 100%;" name="content"
+										placeholder="악플 나빠여" required="required"></textarea>
+								<td><input type="submit" value="저장" id="rep_submit"
+									class="btn btn-defult center-block" /></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div align="center">
+				<div class="col-md-1 "></div>
+				<table class="col-md-8 col-lg-8 table table-hover table-line"
+					style="margin-top: 7%; margin-bottom: 4%;">
+					<thead>
+						<tr>
+							<th class="text-center">제목</th>
+							<th class="text-center">조회수</th>
+							<th class="text-center">작성일</th>
+						</tr>
+					</thead>
+					<c:set var="list" value="${list}" />
+					<c:if test="${!empty list}">
+						<c:forEach items="${list }" var="dto">
+							<tr>
+								<td><a
+									href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=${dto.getInfo_genre()}">
+										${dto.getInfo_title() } </a></td>
+								<td>${dto.getInfo_hit() }</td>
+								<td>${dto.getInfo_date().substring(0,10)  }</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty list}">
+						<tr>
+							<td colspan="3">
+								<h3>검색된 레코드가 없습니다.</h3>
+							</td>
+						</tr>
+					</c:if>
+					<tr>
+						<td colspan="3" align="right"><input type="button"
+							value="글쓰기" onclick="genre_check()"></td>
 					</tr>
 				</table>
-			</form>
 
-		</div>
-		<div align="center">
-			<div class="col-md-1 "></div>
-			<table class="col-md-8 col-lg-8 table table-hover table-line"
-				style="margin-top: 7%; margin-bottom: 4%;">
-				<thead>
-					<tr>
-						<th class="text-center">제목</th>
-						<th class="text-center">조회수</th>
-						<th class="text-center">작성일</th>
-					</tr>
-				</thead>
-				<c:set var="list" value="${list}" />
-				<c:if test="${!empty list}">
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td><a
-								href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=${dto.getInfo_genre()}">
-									${dto.getInfo_title() } </a></td>
-							<td>${dto.getInfo_hit() }</td>
-							<td>${dto.getInfo_date().substring(0,10)  }</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty list}">
-					<tr>
-						<td colspan="3">
-							<h3>검색된 레코드가 없습니다.</h3>
-						</td>
-					</tr>
-				</c:if>
-				<tr>
-					<td colspan="3" align="right"><input type="button" value="글쓰기"
-						onclick="genre_check()"></td>
-				</tr>
-			</table>
-
-			<div>
-				<ul class="pagination">
-					<c:if test="${page > block }">
-						<li class="paginate_button previous"><a
-							href="info_list.do?page=1&genre=${genre}">◀◀</a></li>
-						<li><a
-							href="info_list.do?page=${startBlock - 1 }&genre=${genre}">◀</a></li>
-					</c:if>
-					<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-						<c:if test="${i == page }">
-							<li class="active"><a
-								href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+				<div>
+					<ul class="pagination">
+						<c:if test="${page > block }">
+							<li class="paginate_button previous"><a
+								href="info_list.do?page=1&genre=${genre}">◀◀</a></li>
+							<li><a
+								href="info_list.do?page=${startBlock - 1 }&genre=${genre}">◀</a></li>
 						</c:if>
-						<c:if test="${i != page }">
-							<li><a href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+						<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+							<c:if test="${i == page }">
+								<li class="active"><a
+									href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+							</c:if>
+							<c:if test="${i != page }">
+								<li><a href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+							</c:if>
+						</c:forEach>
+						<c:if test="${endBlock < allPage }">
+							<li class="paginate_button previous"><a
+								href="info_list.do?page=${endBlock + 1 }&genre=${genre}">▶</a></li>
+							<li><a href="info_list.do?page=${allPage }&genre=${genre}">▶▶</a></li>
 						</c:if>
-					</c:forEach>
-					<c:if test="${endBlock < allPage }">
-						<li class="paginate_button previous"><a
-							href="info_list.do?page=${endBlock + 1 }&genre=${genre}">▶</a></li>
-						<li><a href="info_list.do?page=${allPage }&genre=${genre}">▶▶</a></li>
-					</c:if>
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-
 </body>
 </html>

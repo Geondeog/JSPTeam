@@ -36,7 +36,8 @@ public class InfoContAction implements Action {
 		request.setAttribute("genre", info_genre);
 		request.setAttribute("page", nowPage);
 
-		List<ReplyDTO> repList = dao.getrep(info_no, mnum);
+		System.out.println(info_no);
+		List<ReplyDTO> repList = dao.getrep(info_no);
 
 		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
 

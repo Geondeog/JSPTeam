@@ -480,7 +480,7 @@ public class InfoDAO extends DAO {
 	 * @param mnum 
 	 * @return 댓글 리스트
 	 */
-	public List<ReplyDTO> getrep(int info_no, int mnum) {
+	public List<ReplyDTO> getrep(int info_no) {
 		ArrayList<ReplyDTO> list = new ArrayList<>();
 		try {
 			con = openConn();
@@ -488,12 +488,12 @@ public class InfoDAO extends DAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, info_no);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				ReplyDTO dto = new ReplyDTO();
 				dto.setRep_num(rs.getInt("rep_num"));
 				dto.setInfo_no(rs.getInt("Info_no"));
 				dto.setCont(rs.getString("cont"));
-				dto.setWriter(MemberDAO.getInstance().getMember(mnum).getM_nickname());
+				dto.setWriter(MemberDAO.getInstance().getMember(rs.getInt("writerNum")).getM_nickname());
 				dto.setWriterNum(rs.getInt("writerNum"));
 				dto.setDep(rs.getInt("dep"));
 				dto.setParentNum(rs.getInt("parentNum"));
@@ -526,7 +526,7 @@ public class InfoDAO extends DAO {
 			pstmt.setInt(3, dto.getWriterNum());
 			pstmt.setInt(4, dto.getDep());
 			pstmt.setInt(5, dto.getParentNum());
-			rs = pstmt.executeQuery();
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
