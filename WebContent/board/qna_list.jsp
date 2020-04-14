@@ -49,7 +49,7 @@ border-bottom:1px solid black;
     text-align:left;
     padding-left:20px;
     word-break:break-all;
-    width:900px;
+    width:600px;
 }
 
 .array2{
@@ -93,7 +93,7 @@ h1 {
       <h1>Q&A</h1>
      </div> 
    
-       <table border="0"  cellspacing="0" width="75%">
+       <table border="0"  cellspacing="0" width="80%">
             <tr >
                 <td >No</td>    <td colspan="2">Subject</td>  <td >Name</td> <td >Date</td> 
             </tr>

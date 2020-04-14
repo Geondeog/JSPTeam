@@ -65,8 +65,8 @@
 					style="margin-top: 3%; margin-bottom: 4%;">
 					<c:if test="${genre eq 'beans' }">
 						<tr>
-							<th width="100%">생산국가</th>
-							<td width="100%">${dto.getBeans_coun() }&nbsp;<input type="button"
+							<th >생산국가</th>
+							<td >${dto.getBeans_coun() }&nbsp;<input type="button"
 								class="btn btn-defult " onclick="map()" value="생산국가위치">
 								<input type="hidden" id="add" value="${dto.getBeans_counadd()}">
 							</td>
