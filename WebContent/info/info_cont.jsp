@@ -132,24 +132,25 @@
 					<c:forEach var="rep" items="${repList }">
 						<div style="margin-left: 5%">
 							<div
-								style="width: 100%; text-align: left; margin-top: 2%; margin-left: ${rep.getDep() * 50 }px;">
+								style="width: 100%; text-align: left; margin-top: 1%; margin-left: ${rep.getDep() * 50 }px;">
 								<label><img
-									src="<%=request.getContextPath()%>/images/답변아이콘.png">${rep.getWriter() }
+									src="<%=request.getContextPath()%>/images/답변화살표.png">${rep.getWriter() }
 									: ${rep.getCont() } (${rep.getRegdate() })</label>
 								<c:if test="${nickname != null}">
 									<!-- 로그인 중이면 답글 달기 가능 -->
-									<input type="button" onclick="showForm('myForm_${info_no}')"
-										value="답글달기" class="btn btn-defult" style="width: 100px">
-									<div id="myForm_${info_no}" style="display: None;">
+									<input type="button"
+										onclick="showForm('myForm_${rep.getRep_num() }')" value="답글달기"
+										class="btn btn-defult" style="width: 100px">
+									<div id="myForm_${rep.getRep_num() }" style="display: None;">
 										<form action="<%=request.getContextPath()%>/writeReply.do"
 											method="post">
 											<input type="hidden" name="genre" value="${genre}"> <input
 												type="hidden" name="page" value="${page}">
-											<table style='width: 600px'>
-												<tr style="height: 100px">
+											<table style='width: 60%'>
+												<tr>
 													<th>${nickname }</th>
-													<td><textarea style="width: 100%; height: 100px"
-															name="content" placeholder="악플 나빠여" required="required"></textarea>
+													<td><textarea style="width: 100%;" name="content"
+															placeholder="악플 나빠여" required="required"></textarea></td>
 													<td><input type="submit" value="저장"
 														class="btn btn-defult center-block" /></td>
 												</tr>
@@ -171,7 +172,8 @@
 					</c:forEach>
 
 				</c:if>
-				<div style="width: 100%; text-align: left; margin-top: 2%;">
+				<div
+					style="width: 100%; text-align: left; margin-top: 2%; margin-left: 3%">
 					<form action="<%=request.getContextPath()%>/writeReply.do"
 						method="post">
 						<input type="hidden" name="genre" value="${genre}"> <input

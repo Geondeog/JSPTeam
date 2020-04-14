@@ -36,9 +36,6 @@ public class WriteReplyAction implements Action {
 		request.setAttribute("genre", info_genre);
 		request.setAttribute("page", nowPage);
 
-		HttpSession session = request.getSession();
-		int mnum = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
-
 		List<ReplyDTO> repList = dao.getrep(info_no);
 
 		List<InfoDTO> list = infoPaging(request, info_genre, nowPage);
@@ -54,7 +51,7 @@ public class WriteReplyAction implements Action {
 			if (res == 1) {
 				forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./info/info_cont.jsp");
+				forward.setPath("info_cont.do?no=" + info_no + "&page=" + nowPage + "&genre=" + info_genre);
 
 				return forward;
 			}
