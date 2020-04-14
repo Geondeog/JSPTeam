@@ -65,8 +65,8 @@
 					style="margin-top: 3%; margin-bottom: 4%;">
 					<c:if test="${genre eq 'beans' }">
 						<tr>
-							<th>생산국가</th>
-							<td>${dto.getBeans_coun() }&nbsp;<input type="button"
+							<th width="100%">생산국가</th>
+							<td width="100%">${dto.getBeans_coun() }&nbsp;<input type="button"
 								class="btn btn-defult " onclick="map()" value="생산국가위치">
 								<input type="hidden" id="add" value="${dto.getBeans_counadd()}">
 							</td>
@@ -170,93 +170,93 @@
 							</div>
 						</div>
 					</c:forEach>
-
 				</c:if>
-				<div
-					style="width: 100%; text-align: left; margin-top: 2%; margin-left: 3%">
-					<form action="<%=request.getContextPath()%>/writeReply.do"
-						method="post">
-						<input type="hidden" name="genre" value="${genre}"> <input
-							type="hidden" name="page" value="${page}">
-						<!-- 부모 댓글은 없음 -->
-						<input type="hidden" name="parentNum" value="0">
-						<!-- 이 댓글의 깊이 없음-->
-						<input type="hidden" name="depth" value="0">
-						<!-- 이 댓글의 게시글 번호 -->
-						<input type="hidden" name="boardNum" value="${info_no}">
-						<table style='width: 60%'>
-							<tr>
-								<th>${nickname }</th>
-								<td><textarea style="width: 100%;" name="content"
-										placeholder="악플 나빠여" required="required"></textarea>
-								<td><input type="submit" value="저장" id="rep_submit"
-									class="btn btn-defult center-block" /></td>
-							</tr>
-						</table>
-					</form>
-				</div>
 			</div>
-			<div align="center">
-				<div class="col-md-1 "></div>
-				<table class="col-md-8 col-lg-8 table table-hover table-line"
-					style="margin-top: 7%; margin-bottom: 4%;">
-					<thead>
+			<div
+				style="width: 100%; text-align: left; margin-top: 2%; margin-left: 3%">
+				<form action="<%=request.getContextPath()%>/writeReply.do"
+					method="post">
+					<input type="hidden" name="genre" value="${genre}"> <input
+						type="hidden" name="page" value="${page}">
+					<!-- 부모 댓글은 없음 -->
+					<input type="hidden" name="parentNum" value="0">
+					<!-- 이 댓글의 깊이 없음-->
+					<input type="hidden" name="depth" value="0">
+					<!-- 이 댓글의 게시글 번호 -->
+					<input type="hidden" name="boardNum" value="${info_no}">
+					<table style='width: 60%'>
 						<tr>
-							<th class="text-center">제목</th>
-							<th class="text-center">조회수</th>
-							<th class="text-center">작성일</th>
+							<th>${nickname }</th>
+							<td><textarea style="width: 100%;" name="content"
+									placeholder="악플 나빠여" required="required"></textarea>
+							<td><input type="submit" value="저장" id="rep_submit"
+								class="btn btn-defult center-block" /></td>
 						</tr>
-					</thead>
-					<c:set var="list" value="${list}" />
-					<c:if test="${!empty list}">
-						<c:forEach items="${list }" var="dto">
-							<tr>
-								<td><a
-									href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=${dto.getInfo_genre()}">
-										${dto.getInfo_title() } </a></td>
-								<td>${dto.getInfo_hit() }</td>
-								<td>${dto.getInfo_date().substring(0,10)  }</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${empty list}">
-						<tr>
-							<td colspan="3">
-								<h3>검색된 레코드가 없습니다.</h3>
-							</td>
-						</tr>
-					</c:if>
-					<tr>
-						<td colspan="3" align="right"><input type="button"
-							value="글쓰기" onclick="genre_check()"></td>
-					</tr>
-				</table>
-
-				<div>
-					<ul class="pagination">
-						<c:if test="${page > block }">
-							<li class="paginate_button previous"><a
-								href="info_list.do?page=1&genre=${genre}">◀◀</a></li>
-							<li><a
-								href="info_list.do?page=${startBlock - 1 }&genre=${genre}">◀</a></li>
-						</c:if>
-						<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-							<c:if test="${i == page }">
-								<li class="active"><a
-									href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
-							</c:if>
-							<c:if test="${i != page }">
-								<li><a href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
-							</c:if>
-						</c:forEach>
-						<c:if test="${endBlock < allPage }">
-							<li class="paginate_button previous"><a
-								href="info_list.do?page=${endBlock + 1 }&genre=${genre}">▶</a></li>
-							<li><a href="info_list.do?page=${allPage }&genre=${genre}">▶▶</a></li>
-						</c:if>
-					</ul>
-				</div>
+					</table>
+				</form>
 			</div>
 		</div>
+		<div align="center">
+			<div class="col-md-1 "></div>
+			<table class="col-md-8 col-lg-8 table table-hover table-line"
+				style="margin-top: 7%; margin-bottom: 4%;">
+				<thead>
+					<tr>
+						<th class="text-center">제목</th>
+						<th class="text-center">조회수</th>
+						<th class="text-center">작성일</th>
+					</tr>
+				</thead>
+				<c:set var="list" value="${list}" />
+				<c:if test="${!empty list}">
+					<c:forEach items="${list }" var="dto">
+						<tr>
+							<td><a
+								href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=${dto.getInfo_genre()}">
+									${dto.getInfo_title() } </a></td>
+							<td>${dto.getInfo_hit() }</td>
+							<td>${dto.getInfo_date().substring(0,10)  }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty list}">
+					<tr>
+						<td colspan="3">
+							<h3>검색된 레코드가 없습니다.</h3>
+						</td>
+					</tr>
+				</c:if>
+				<tr>
+					<td colspan="3" align="right"><input type="button" value="글쓰기"
+						onclick="genre_check()"></td>
+				</tr>
+			</table>
+
+			<div>
+				<ul class="pagination">
+					<c:if test="${page > block }">
+						<li class="paginate_button previous"><a
+							href="info_list.do?page=1&genre=${genre}">◀◀</a></li>
+						<li><a
+							href="info_list.do?page=${startBlock - 1 }&genre=${genre}">◀</a></li>
+					</c:if>
+					<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+						<c:if test="${i == page }">
+							<li class="active"><a
+								href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+						</c:if>
+						<c:if test="${i != page }">
+							<li><a href="info_list.do?page=${i }&genre=${genre}">${i }</a></li>
+						</c:if>
+					</c:forEach>
+					<c:if test="${endBlock < allPage }">
+						<li class="paginate_button previous"><a
+							href="info_list.do?page=${endBlock + 1 }&genre=${genre}">▶</a></li>
+						<li><a href="info_list.do?page=${allPage }&genre=${genre}">▶▶</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
