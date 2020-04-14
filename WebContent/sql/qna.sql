@@ -16,7 +16,7 @@ create table qna (
 );
 
 
-
+ 
 
 
 
