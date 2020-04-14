@@ -65,8 +65,7 @@
 					style="margin-top: 3%; margin-bottom: 4%;">
 					<c:if test="${genre eq 'beans' }">
 						<tr>
-							<th >생산국가</th>
-							<td >${dto.getBeans_coun() }&nbsp;<input type="button"
+							<td >생산국가 : ${dto.getBeans_coun() }&nbsp;<input type="button"
 								class="btn btn-defult " onclick="map()" value="생산국가위치">
 								<input type="hidden" id="add" value="${dto.getBeans_counadd()}">
 							</td>
@@ -74,7 +73,6 @@
 					</c:if>
 					<c:if test="${genre eq 'country' }">
 						<tr>
-							<th>대륙</th>
 							<td>${dto.getCoun_7() }&nbsp;<input type="button"
 								class="btn btn-defult " onclick="map()" value="나라위치"> <input
 								type="hidden" id="add" value="${dto.getCoun_add()}">
@@ -83,17 +81,14 @@
 					</c:if>
 					<c:if test="${genre eq 'extra' }">
 						<tr>
-							<th>추출분류</th>
-							<td>${dto.getExtra_genre() }</td>
+							<td>추출분류 : ${dto.getExtra_genre() }</td>
 						</tr>
 					</c:if>
 					<tr>
-						<th>상세정보</th>
 						<td>${dto.getInfo_cont() }</td>
 					</tr>
 					<c:if test="${!empty dto.getInfo_file() }">
 						<tr>
-							<th>첨부파일</th>
 							<td><img alt="다운로드" src="./images/download.png" width="5%">
 								<a href="download.do?file=${dto.getInfo_file() }">
 									${dto.getInfo_file() }</a></td>
@@ -101,7 +96,7 @@
 					</c:if>
 					<c:if test="${ mnum <= 100 }">
 						<tr>
-							<td colspan="2" align="right"><input type="button"
+							<td align="right"><input type="button"
 								value="수정" class="btn btn-defult "
 								onclick="location.href='<%=request.getContextPath()%>/info_write.do?no=${dto.getInfo_no()}&page=${page}&genre=${genre}'" />
 								&nbsp;<input type="button" value="삭제" class="btn btn-defult "
