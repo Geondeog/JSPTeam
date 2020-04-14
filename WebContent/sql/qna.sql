@@ -10,7 +10,8 @@ create table qna (
      qna_date date,                                                     	 -- 업로드 날짜
      qna_group number(4),                                            -- 게시글 그룹
      qna_step number(4),                                               -- 게시글 답변 단계
-     qna_indent number(4)                                            -- 답변글 들여쓰기
+     qna_indent number(4),                                            -- 답변글 들여쓰기
+     qna_modify number(4) default 0                          --수정됨 표시기능
                  
 );
 
@@ -25,4 +26,4 @@ increment by 1
 nocache;
 
 
-insert into qna values(qna_seq.nextval,'게시판 문의하기', '서지수','어떤 등급일 때 글쓰기를 할 수 있나요?',1234,null,sysdate,qna_seq.currval,0,0);
+insert into qna values(qna_seq.nextval,'게시판 문의하기', '서지수','어떤 등급일 때 글쓰기를 할 수 있나요?',1234,null,sysdate,qna_seq.currval,0,0,0);
