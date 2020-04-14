@@ -57,6 +57,41 @@ public class InfoDAO extends DAO {
 		}
 		return list;
 	}
+	
+	/**
+	 * 검색 시 게시물 종류에 따른 게시글 리스트 가져오기 + paging
+	 * @param find_name
+	 * @param start
+	 * @param end
+	 * @return 게시글 리스트
+	 */
+	public List<InfoDTO> searchList(String find_name, int start, int end) {
+		List<InfoDTO> list = new ArrayList<>();
+		try {
+			con = openConn();
+			sql = "select * from (select p.*, row_number() over(order by info_no desc) rnum from info_v p where info_title like ?) where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + find_name + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				InfoDTO dto = new InfoDTO();
+				dto.setInfo_no(rs.getInt("info_no"));
+				dto.setInfo_genre(rs.getString("info_genre"));
+				dto.setInfo_title(rs.getString("info_title"));
+				dto.setInfo_hit(rs.getInt("info_hit"));
+				dto.setInfo_date(rs.getString("info_date"));
+				dto.setInfo_file(rs.getString("info_file"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return list;
+	}
 
 	/**
 	 * 페이징 처리를 위한 게시글 수 체크
@@ -70,6 +105,31 @@ public class InfoDAO extends DAO {
 			sql = "select count(*) from info where info_genre like ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + info_genre + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return count;
+	}
+	
+	/**
+	 * 검색 시 페이징 처리를 위한 게시글 수 체크
+	 * @param find_name
+	 * @return 게시글 수
+	 */
+	public int getSearchCount(String find_name) {
+		int count = 0;
+		try {
+			con = openConn();
+			sql = "select count(*) from info_v where info_title like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + find_name + "%");
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

@@ -171,6 +171,7 @@ create table member_in (
 select max(m_no) from member_in where m_no < 100;
 select max(m_no) from member_in where m_no > 100;
 
+insert into member_in values('_','_','_','010','_','_','',-1);
 insert into member_in values('mrg_1','백서진','0000','010','서울','aaa@aaa','20/04/01',1);
 insert into member_in values('hong','홍길동','1234','010','대전','bbb@bbb','20/04/04',101);
 insert into member_in values('leess','이순신','1234','010','대구','ccc@ccc','20/04/05',102);

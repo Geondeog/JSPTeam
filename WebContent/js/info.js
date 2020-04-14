@@ -10,7 +10,6 @@ include("https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 include("https://code.jquery.com/jquery-3.4.1.min.js");
 
 
-
 // list_view.jsp
 function genre_check() {
 	
@@ -30,6 +29,12 @@ function genre_check() {
 function closeLayer() {
 	// iframe을 넣은 element를 안보이게 한다.
 	element_layer.style.display = 'none';
+}
+
+function searchList() {
+	var find_name = $("#find_name").val();
+	if(find_name != ""){window.location.href = "search_list.do?find_name=" + find_name;}
+	else{ jAlert("검색할 단어를 입력하세요", "ERROR"); }
 }
 
 // list_genre.jsp
@@ -55,7 +60,6 @@ $(function() {
 	$("#delete_btn").click(function() {
 		var no = $("#no").val();
 		var genre = $("#genre").val();
-		console.log(no);
 		$.ajax({
 			type : "post", // 데이터 전송 방식(Get, Post 방식)
 			url : "delete_choice.do", // 파일 주소와 경로

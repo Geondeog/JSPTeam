@@ -14,6 +14,10 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
 	/* Bootstrap CDN JavaScript */
 </script>
+<script src="<%=request.getContextPath()%>/js/info.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 
 </head>
 <body>
@@ -40,6 +44,11 @@
 						<li><a href="<%=request.getContextPath()%>/info_find.do"
 							target="listview">CAFE SEARCH</a></li>
 					</ul>
+				</div>
+				<div class="panel-footer" align="center">
+					<input type="text" id="find_name" style="width: 100%;">
+					<input type="button" class="btn btn-defult" style="width: 100%;"
+						onclick="searchList()" value="검색" />
 				</div>
 			</div>
 		</div>
