@@ -75,9 +75,16 @@
 				<ul class="nav navbar-nav navbar-right">
 					<c:set var="mno" value="${sessionScope.mno}" />
 					<c:if test="${!empty mno }">
-						<!-- 로그인 했을 경우  -->
-						<li><a href="<%=request.getContextPath()%>/mypage.do"
+						<!-- 로그인 했을 경우  && 관리자일 경우 -->
+						<c:if test="${mno <= 100 }">
+							<li><a href="<%=request.getContextPath()%>/adminpage.do"
 							target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+						</c:if>
+						<!-- 로그인 했을 경우  && 일반사용자일 경우 -->
+						<c:if test="${mno > 100 }">
+							<li><a href="<%=request.getContextPath()%>/mypage.do"
+							target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+						</c:if>
 					</c:if>
 					<c:if test="${empty mno }">
 						<!-- 로그인 안 했을 경우 -->
