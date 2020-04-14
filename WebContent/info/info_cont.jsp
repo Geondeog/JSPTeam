@@ -226,10 +226,7 @@
 						</td>
 					</tr>
 				</c:if>
-				<tr>
-					<td colspan="3" align="right"><input type="button" value="글쓰기"
-						onclick="genre_check()"></td>
-				</tr>
+
 			</table>
 
 			<div>

@@ -48,7 +48,6 @@ public class InfoDAO extends DAO {
 				dto.setInfo_hit(rs.getInt("info_hit"));
 				dto.setInfo_date(rs.getString("info_date"));
 				dto.setInfo_file(rs.getString("info_file"));
-				System.out.println(dto.getInfo_no());
 				list.add(dto);
 			}
 		} catch (Exception e) {
