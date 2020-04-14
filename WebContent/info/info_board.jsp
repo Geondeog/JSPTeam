@@ -22,9 +22,14 @@
 	<script type="text/javascript">
 	//iframe resize
 	function autoResize(){
-		var iframeHeight = listview.document.body.scrollHeight;
+		var height = listview.document.body.scrollHeight;
+		var iframeHeight = (height*1.35) +'px';
+		
+		console.log(iframeHeight);
 
-		listview.height = iframeHeight + 20;
+		document.getElementById("listview").style.height = iframeHeight;
+		
+		console.log(document.getElementById("listview").style.height);
 
 	}
 </script>
@@ -65,7 +70,7 @@
 
 		<div class="col-sm-10">
 			<iframe src="<%=request.getContextPath()%>/info.do" name="listview" id="listview"
-				style="display: block; width: 100%; border: 0; scrolling: no;" onload="autoResize()">
+				style="display: block; width: 100%; height: 100vh; border: 0; scrolling: no;" onload="autoResize()">
 			</iframe>
 		</div>
 	</div>
