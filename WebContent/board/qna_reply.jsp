@@ -167,7 +167,7 @@ h1 {
 				</tr>
 				<tr>
 					<th>Name</th>
-					<td class="line"><input type="text" name="writer"  required/></td>
+					<td class="line"><input type="text" name="writer"value="${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }" readonly required /></td>
 				</tr>
 				<tr>
 					<td colspan="2" class="detail">
