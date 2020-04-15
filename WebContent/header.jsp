@@ -11,13 +11,14 @@
 <meta name="description" content="CAFE:in">
 <meta name="keywords" content="JSP, 반응형 웹, 부트스트랩, 커피, 원두, 웹">
 <title>CAFE:in - 당신의 여유를 함께합니다</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap-3.4.1.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap-3.4.1.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
 	/* Bootstrap CDN JavaScript */
 </script>
+
 </head>
 
 <body>

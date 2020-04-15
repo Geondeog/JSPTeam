@@ -20,7 +20,6 @@
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
 
 <script type="text/javascript">
-
 //iframe resize
 function autoResize() {
 	
@@ -38,7 +37,6 @@ function autoResize() {
 		console.log(document.getElementById("listview").style.height);
 	});
 }
-
 </script>
 
 </head>
