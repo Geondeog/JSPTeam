@@ -18,20 +18,27 @@
 <script src="<%=request.getContextPath()%>/js/jquery.alerts.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/jquery.alerts.css" />
+
+<script type="text/javascript">
+
+//iframe resize
+function autoResize() {
 	
-	<script type="text/javascript">
-	//iframe resize
-	function autoResize(){
+	var height = listview.document.body.scrollHeight;
+	var iframeHeight = (height * 1.35) + 'px';
+	console.log(iframeHeight);
+	document.getElementById("listview").style.height = iframeHeight;
+	console.log(document.getElementById("listview").style.height);
+	
+	$(window).resize(function() {
 		var height = listview.document.body.scrollHeight;
-		var iframeHeight = (height*1.35) +'px';
-		
+		var iframeHeight = (height * 1.35) + 'px';
 		console.log(iframeHeight);
-
 		document.getElementById("listview").style.height = iframeHeight;
-		 
 		console.log(document.getElementById("listview").style.height);
+	});
+}
 
-	}
 </script>
 
 </head>
@@ -61,17 +68,18 @@
 					</ul>
 				</div>
 				<div class="panel-footer" align="center">
-					<input type="text" id="find_name" style="width: 100%;">
-					<input type="button" class="btn btn-defult" style="width: 100%;"
+					<input type="text" id="find_name" style="width: 100%;"> <input
+						type="button" class="btn btn-defult" style="width: 100%;"
 						onclick="searchList()" value="검색" />
 				</div>
 			</div>
 		</div>
 
 		<div class="col-sm-10">
-			<iframe src="<%=request.getContextPath()%>/info.do" name="listview" id="listview"
-				style="display: block; width: 100%; height: 100vh; border: 0; scrolling: no;" onload="autoResize()">
-			</iframe>
+			<iframe src="<%=request.getContextPath()%>/info.do" name="listview"
+				id="listview"
+				style="display: block; width: 100%; height: 100vh; border: 0; scrolling: no;"
+				onload="autoResize()"> </iframe>
 		</div>
 	</div>
 
