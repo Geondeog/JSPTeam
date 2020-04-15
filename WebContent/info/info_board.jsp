@@ -25,16 +25,12 @@ function autoResize() {
 	
 	var height = listview.document.body.scrollHeight;
 	var iframeHeight = (height * 1.35) + 'px';
-	console.log(iframeHeight);
 	document.getElementById("listview").style.height = iframeHeight;
-	console.log(document.getElementById("listview").style.height);
 	
 	$(window).resize(function() {
 		var height = listview.document.body.scrollHeight;
 		var iframeHeight = (height * 1.35) + 'px';
-		console.log(iframeHeight);
 		document.getElementById("listview").style.height = iframeHeight;
-		console.log(document.getElementById("listview").style.height);
 	});
 }
 </script>
