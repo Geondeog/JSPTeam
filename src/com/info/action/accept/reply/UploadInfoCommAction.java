@@ -33,7 +33,7 @@ public class UploadInfoCommAction implements Action {
 		dto.setWriternum(writernum);
 		dto.setDep(dep);
 		dto.setParentnum(parentnum);
-		if(request.getParameter("category")!="") {
+		if(request.getParameter("category")!=null) {
 			System.out.println(board_no);
 			System.out.println(request.getParameter("category"));
 			dto.setR_category("공지사항");

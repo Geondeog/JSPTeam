@@ -447,7 +447,7 @@
 			data: serializeData,
 			success: function(data){
 				if(data > 0){
-				location.href="getNoticeCont.do?board_no="+board_no+"&&category=공지사항";					
+				location.href="getNoticeCont.do?board_no="+board_no;					
 				} else {
 					jAlert('댓글 등록 실패','실패');
 				}
