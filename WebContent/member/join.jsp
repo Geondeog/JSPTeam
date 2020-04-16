@@ -108,6 +108,11 @@
 									style="width: 100%; height: 300px; margin-top: 10px; display: none"></div>
 							</td>
 						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+								<h4><font color="red"> **회원 탈퇴 시 회사가 보유한 개인 정보가 삭제되지 않는 것을 원칙으로 합니다.** </font></h4>
+							</td>
+						</tr>
 
 						<%-- 버튼 --%>
 						<tr align="center">

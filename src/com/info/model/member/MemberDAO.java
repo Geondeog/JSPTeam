@@ -337,31 +337,54 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 
-	public int getListCount() {
-		 int count=0;  
-			try {
-					con = openConn();
-					sql="select count(*) from member_in";
-					pstmt=con.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					
-					if(rs.next()) {
-						count = rs.getInt(1);
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				closeConn(con, pstmt, rs);
-			}
-			return count;
-	}
 
+	/**
+	 * 회원 리스트 받아오기
+	 * @return list
+	 */
 	public List<MemberDTO> getMemberList() {
 		List<MemberDTO> list = new ArrayList<>();
 
 		try {			
 			con = openConn();
 			sql = "select * from member_in order by m_no desc";
+			
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setM_pwd(rs.getString("m_pwd"));
+				dto.setM_tel(rs.getString("m_tel"));
+				dto.setM_address(rs.getString("m_address"));
+				dto.setM_email(rs.getString("m_email"));
+				dto.setM_date(rs.getString("m_date"));
+				dto.setM_no(rs.getInt("m_no"));
+				
+				list.add(dto);
+			}
+
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(con, pstmt, rs);
+		}
+		return list;
+	}
+	
+	/**
+	 * 탈퇴회원 리스트 받아오기
+	 * @return list
+	 */
+	public List<MemberDTO> outMemberList() {
+		List<MemberDTO> list = new ArrayList<>();
+
+		try {			
+			con = openConn();
+			sql = "select * from member_out order by m_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			rs=pstmt.executeQuery();

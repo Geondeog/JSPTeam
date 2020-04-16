@@ -19,6 +19,8 @@ public class MemberListAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		List<MemberDTO> list = dao.getMemberList();
 		request.setAttribute("List", list);
+		List<MemberDTO> outList = dao.outMemberList();
+		request.setAttribute("outList", outList);
 		
 		ActionForward forward = mnum(request);
 

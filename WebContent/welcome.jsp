@@ -9,8 +9,8 @@
 <body>
 
 	<div align="center" style="margin-top: 2%; margin-bottom: 2%;">
-		<img alt="welcome"
-			src="<%=request.getContextPath()%>/images/welcomeimg.jpg" width="95%">
+		<a href="<%=request.getContextPath()%>/info_board.do" target="view"><img alt="welcome"
+			src="<%=request.getContextPath()%>/images/welcomeimg.jpg" width="95%"></a>
 	</div>
 
 </body>

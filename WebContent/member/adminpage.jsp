@@ -23,17 +23,28 @@
 
 <script type="text/javascript">
 	function admin() {
-		//debugger;
-		document.getElementById("user").style.display = "none";
 		document.getElementById("admin").style.display = "block";
+		document.getElementById("user").style.display = "none";
+		document.getElementById("out").style.display = "none";
 	}
 
 	function user() {
-		//debugger;
 		document.getElementById("admin").style.display = "none";
 		document.getElementById("user").style.display = "block";
+		document.getElementById("out").style.display = "none";
+	}
+
+	function out() {
+		document.getElementById("admin").style.display = "none";
+		document.getElementById("user").style.display = "none";
+		document.getElementById("out").style.display = "block";
 	}
 </script>
+<style type="text/css">
+th, td {
+	text-align: center;
+}
+</style>
 
 </head>
 <body>
@@ -48,10 +59,12 @@
 		<div class="col-xs-12 col-sm-12 col-md-12" align="center">
 
 			<div align="left" class="btn-group" data-toggle="buttons">
-				<label class="btn btn-primary active" onclick="admin()"> <input
-					type="radio" name="options" id="option1" autocomplete="off" checked>관리자
-				</label> <label class="btn btn-danger option2" onclick="user()"> <input
-					type="radio" name="options" id="option2" autocomplete="off">일반회원
+				<label class="btn btn-primary " onclick="admin()"> <input
+					type="radio" name="options" autocomplete="off" checked>관리자
+				</label> <label class="btn btn-danger " onclick="user()"> <input
+					type="radio" name="options" autocomplete="off">일반회원
+				</label> <label class="btn btn-warning " onclick="out()"> <input
+					type="radio" name="options" autocomplete="off">탈퇴회원
 				</label>
 			</div>
 			<!-- 버튼 끝 -->
@@ -87,6 +100,11 @@
 							</c:if>
 						</c:forEach>
 					</c:if>
+					<c:if test="${empty list }">
+						<tr>
+							<td colspan="5"><h3>검색된 레코드가 없습니다.</h3></td>
+						</tr>
+					</c:if>
 				</table>
 			</div>
 			<!-- admin 끝 -->
@@ -117,9 +135,45 @@
 							</c:if>
 						</c:forEach>
 					</c:if>
+					<c:if test="${empty list }">
+						<tr>
+							<td colspan="5"><h3>검색된 레코드가 없습니다.</h3></td>
+						</tr>
+					</c:if>
+
 				</table>
 			</div>
 			<!-- user 끝 -->
+
+			<div id="out" style="display: none;">
+				<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
+					style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
+
+					<tr>
+						<th>회원 No.</th>
+						<th>회원 ID</th>
+						<th>회원 닉네임</th>
+						<th>탈퇴 일시</th>
+					</tr>
+
+					<c:if test="${!empty outList }">
+						<c:forEach items="${outList }" var="dto">
+							<tr>
+								<td>${dto.getM_no() }</td>
+								<td>${dto.getM_id() }</td>
+								<td>${dto.getM_nickname() }</td>
+								<td>${dto.getM_date() }</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty outList }">
+						<tr>
+							<td colspan="4"><h3>검색된 레코드가 없습니다.</h3></td>
+						</tr>
+					</c:if>
+				</table>
+			</div>
+			<!-- 탈퇴회원 끝 -->
 		</div>
 		<!-- center 끝 -->
 	</div>
