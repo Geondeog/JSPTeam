@@ -229,20 +229,7 @@
 		</div>
 		<hr style="width: 100%;" />
 		</c:if>
-			<br />
-		
-		
-			<form method="post" action="<%= request.getContextPath() %>/wait_search.do">
-			<select name="req_box" style="margin-left: 7%;margin-right: 1%; width: 15%;">
-				<option value="title">글제목</option>
-				<option value="cont">글내용</option>
-				<option value="title+cont">제목+내용</option>
-			</select>
-			<input type="hidden" name="mno" value="${sessionScope.userNo }" />
-			<input name="req_text" style="width: 59%; margin-right: 1%;" />
-			<input type="submit" value="검색" style="margin-right: 1%; margin-bottom: 1%;
-													margin-top: -1%;" />
-			</form>
+
 		</div>
 			
 		</div>
