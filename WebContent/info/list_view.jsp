@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<div class="col-xs-12 col-sm-12 col-md-12 " style="width: 90%; margin-left: 5%; margin-top: 5%; margin-bottom: 4%;">
+	<div class="col-xs-12 col-sm-12 col-md-12 " style="width: 90%; margin-left: 5%; margin-top: 2%; margin-bottom: 2%;">
 		<hr width="100%" class="title" />
 		<h2>${fn:toUpperCase(genre)}</h2>
 		<hr width="100%" class="title" />
@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="row" style="width: 90%; margin-left: 5%;">
 			<table class="col-md-10 col-lg-10 table table-hover table-line"
-				style="margin-top: 5%; margin-bottom: 4%;">
+				style="margin-top: 2%; margin-bottom: 2%;">
 				<thead>
 					<tr>
 						<th class="text-center">제목</th>

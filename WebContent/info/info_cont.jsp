@@ -98,7 +98,7 @@
 						<tr>
 							<td align="right"><input type="button"
 								value="수정" class="btn btn-defult "
-								onclick="location.href='<%=request.getContextPath()%>/info_write.do?no=${dto.getInfo_no()}&page=${page}&genre=${genre}'" />
+								onclick="location.href='<%=request.getContextPath()%>/info_writecont.do?no=${dto.getInfo_no()}&page=${page}&genre=${genre}'" />
 								&nbsp;<input type="button" value="삭제" class="btn btn-defult "
 								id="delete_btn" />&nbsp;<input type="button" value="목록"
 								class="btn btn-defult "

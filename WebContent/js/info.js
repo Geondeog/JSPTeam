@@ -48,7 +48,7 @@ function choiceOk() {
 
 	let genre = f.genre.value;
 
-	opener.location.href = "info_write.do?genre=" + genre;
+	opener.location.href = "info_writecont.do?genre=" + genre;
 
 	parent.window.close(); // 선택 후 윈도우창 닫기
 }

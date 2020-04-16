@@ -79,7 +79,7 @@ hr {
 </script>
 
 </head>
-<body>
+<body style="width: 95%">
 
 	<div class="container" style="margin-top: 4%">
 		<c:set var="dto" value="${cont }" />
