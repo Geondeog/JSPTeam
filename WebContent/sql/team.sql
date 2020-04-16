@@ -147,7 +147,8 @@ CREATE TABLE info_reply (
    writerNum NUMBER(5), -- 댓글쓴이 num
    dep NUMBER, -- 이 댓글의 깊이
    parentNum NUMBER, -- 이 댓글이 만약 대댓글이라면, 몇 번 댓글이 부모인지
-   regdate DATE
+   regdate DATE,
+   R_CATEGORY VARCHAR2(50 BYTE)
 );
 
 CREATE SEQUENCE rep_seq 
@@ -162,7 +163,7 @@ create table member_in (
  m_nickname VARCHAR2(20 BYTE) NOT NULL, 
  m_pwd VARCHAR2(20 BYTE) NOT NULL, 
  m_tel VARCHAR2(20 BYTE), 
- m_address VARCHAR2(20 BYTE), 
+ m_address VARCHAR2(200 BYTE), 
  m_email VARCHAR2(50 BYTE), 
  m_date DATE, 
  m_no NUMBER(5, 0)  PRIMARY KEY
@@ -175,6 +176,11 @@ insert into member_in values('mrg_1','백서진','0000','010','서울','aaa@aaa'
 insert into member_in values('hong','홍길동','1234','010','대전','bbb@bbb','20/04/04',101);
 insert into member_in values('leess','이순신','1234','010','대구','ccc@ccc','20/04/05',102);
 
+insert into member_in values('hhhh','홍길동','1234','010','대전','bbb@bbb','20/04/04',111);
+insert into member_in values('kkkk','홍길동','1234','010','대전','bbb@bbb','20/04/04',121);
+
+insert into member_in values('22','_','_','010','_','_','',2);
+
 -- 탈퇴 회원정보 저장 테이블
 create table member_out (
  m_id VARCHAR2(20 BYTE) NOT NULL, 
@@ -186,6 +192,8 @@ create table member_out (
  m_date DATE,  --탈퇴 날짜
  m_no NUMBER(5, 0) NOT NULL
  );
+
+select * from member_in order by m_no desc;
 
 commit;
 
