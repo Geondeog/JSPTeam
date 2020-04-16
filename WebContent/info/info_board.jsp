@@ -24,18 +24,18 @@
 function autoResize() {
 	
 	var height = listview.document.body.scrollHeight;
-	var iframeHeight = (height * 1.35) + 'px';
+	var iframeHeight = (height * 1.1) + 'px';
 	document.getElementById("listview").style.height = iframeHeight;
 	var vheight = parent.view.document.body.scrollHeight;
-	var viframeHeight = (height * 1.5) + 'px';
+	var viframeHeight = (height * 1.1) + 'px';
 	parent.document.getElementById("view").style.height = iframeHeight;
 	
 	$(window).resize(function() {
 		var height = listview.document.body.scrollHeight;
-		var iframeHeight = (height * 1.35) + 'px';
+		var iframeHeight = (height * 1.1) + 'px';
 		document.getElementById("listview").style.height = iframeHeight;
 		var vheight = parent.view.document.body.scrollHeight;
-		var viframeHeight = (height * 1.5) + 'px';
+		var viframeHeight = (height * 1.1) + 'px';
 		parent.document.getElementById("view").style.height = iframeHeight;
 	});
 }

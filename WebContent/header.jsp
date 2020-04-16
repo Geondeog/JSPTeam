@@ -25,12 +25,12 @@
 	function autoResize() {
 
 		var height = view.document.body.scrollHeight;
-		var iframeHeight = (height * 1.35) + 'px';
+		var iframeHeight = (height * 1.1) + 'px';
 		document.getElementById("view").style.height = iframeHeight;
 
 		$(window).resize(function() {
 			var height = view.document.body.scrollHeight;
-			var iframeHeight = (height * 1.35) + 'px';
+			var iframeHeight = (height * 1.1) + 'px';
 			document.getElementById("view").style.height = iframeHeight;
 		});
 	}
