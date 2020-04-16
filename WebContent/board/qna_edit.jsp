@@ -124,7 +124,7 @@ textarea {
 </style>
 
 </head>
-<body>
+<body style="width: 96%">
 	<div class="row" align="center">
 	 <div class="col-xs-1 col-sm-1 col-md-1"></div>
 	  <div class="col-xs-8 col-sm-3 col-md-8" align="left" style="margin-bottom: 2%;"> 

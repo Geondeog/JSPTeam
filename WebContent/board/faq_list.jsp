@@ -94,7 +94,7 @@ h1 {
 }
 </style>
 </head>
-<body>
+<body style="width: 96%;">
 
 
 

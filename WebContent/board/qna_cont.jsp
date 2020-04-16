@@ -57,7 +57,7 @@ pre{
 
 </style>
 </head>
-<body>
+<body style="width: 96%">
 
 <div class="row"align="center">
  <div class="col-xs-1 col-sm-1 col-md-1"></div>
