@@ -1,5 +1,8 @@
 package com.info.model.member;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.info.model.DAO;
 
 public class MemberDAO extends DAO {
@@ -282,6 +285,11 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 
+	/**
+	 * 회원 번호 기준으로 탈퇴
+	 * @param m_no
+	 * @return
+	 */
 	public int delete(int m_no) {
 		int result = 0;
 		try {
@@ -297,6 +305,88 @@ public class MemberDAO extends DAO {
 			closeConn(con, pstmt, rs);
 		}
 		return result;
+	}
+	
+	
+	/**
+	 * 탈퇴회원 정보 DB에 저장하기
+	 * 
+	 * @param m_no
+	 * @return 성공 시 : 1
+	 */	
+	public int keepDeleteMember(MemberDTO dto) {
+		int result = 0;
+		
+		try {
+			con = openConn();
+			sql = "insert into member_out values(?,?,?,?,?,?,sysdate,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getM_id());
+			pstmt.setString(2, dto.getM_nickname());
+			pstmt.setString(3, dto.getM_pwd());
+			pstmt.setString(4, dto.getM_tel());
+			pstmt.setString(5, dto.getM_address());
+			pstmt.setString(6, dto.getM_email());
+			pstmt.setInt(7, dto.getM_no());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int getListCount() {
+		 int count=0;  
+			try {
+					con = openConn();
+					sql="select count(*) from member_in";
+					pstmt=con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						count = rs.getInt(1);
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeConn(con, pstmt, rs);
+			}
+			return count;
+	}
+
+	public List<MemberDTO> getMemberList() {
+		List<MemberDTO> list = new ArrayList<>();
+
+		try {			
+			con = openConn();
+			sql = "select * from member_in order by m_no desc";
+			
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setM_pwd(rs.getString("m_pwd"));
+				dto.setM_tel(rs.getString("m_tel"));
+				dto.setM_address(rs.getString("m_address"));
+				dto.setM_email(rs.getString("m_email"));
+				dto.setM_date(rs.getString("m_date"));
+				dto.setM_no(rs.getInt("m_no"));
+				
+				list.add(dto);
+			}
+
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(con, pstmt, rs);
+		}
+		return list;
 	}
 
 }

@@ -16,6 +16,7 @@ public class JoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
 		String m_nickname = request.getParameter("m_nickname");
@@ -31,7 +32,13 @@ public class JoinAction implements Action {
 		String detailAddress = request.getParameter("detailAddress");
 		String extraAddress = request.getParameter("extraAddress");
 		String m_address = postcode + "|" + address + "|" + detailAddress + "|" + extraAddress;
-		
+
+		int mno = -1;
+
+		if (request.getParameter("no") != null) {
+			mno = Integer.parseInt(request.getParameter("no"));
+		}
+
 		MemberDTO dto = new MemberDTO();
 		dto.setM_id(m_id);
 		dto.setM_pwd(m_pwd);
@@ -41,9 +48,9 @@ public class JoinAction implements Action {
 		dto.setM_address(m_address);
 
 		MemberDAO dao = MemberDAO.getInstance();
-		
+
 		int result = 0;
-		
+
 		// 1. 세션 받기
 		HttpSession session = request.getSession();
 
@@ -53,16 +60,18 @@ public class JoinAction implements Action {
 		if (mnum == -1) {
 			dto.setM_no(dao.m_noCheck());
 			result = dao.insertMember(dto);
+			if (result > 0) {
+				out.println("member.do");
+				out.close();
+			}
 		} else {
-			dto.setM_no(mnum);
+			dto.setM_no(mno);
+			System.out.println(mno);
 			result = dao.updateMember(dto);
-		}
-
-		PrintWriter out = response.getWriter();
-
-		if (result > 0) {
-			out.println(result);
-			out.close();
+			if (result > 0) {
+				out.println("mypage.do?mno=" + mno);
+				out.close();
+			}
 		}
 
 		return null;

@@ -91,12 +91,12 @@
 					<c:if test="${!empty mno }">
 						<!-- 로그인 했을 경우  && 관리자일 경우 -->
 						<c:if test="${mno <= 100 }">
-							<li><a href="<%=request.getContextPath()%>/adminpage.do"
+							<li><a href="<%=request.getContextPath()%>/member_list.do"
 								target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
 						</c:if>
 						<!-- 로그인 했을 경우  && 일반사용자일 경우 -->
 						<c:if test="${mno > 100 }">
-							<li><a href="<%=request.getContextPath()%>/mypage.do"
+							<li><a href="<%=request.getContextPath()%>/mypage.do?mno=${sessionScope.mno}"
 								target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
 						</c:if>
 					</c:if>

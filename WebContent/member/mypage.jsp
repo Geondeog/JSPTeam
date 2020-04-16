@@ -33,11 +33,12 @@
 			<hr width="100%" class="title" />
 		</div>
 		<c:set var="dto"
-			value="${ MemberDAO.getInstance().getMember( sessionScope.mno ) }" />
-			<input type="hidden" id="no" value="${dto.getM_no()}">
+			value="${ MemberDAO.getInstance().getMember( param.mno )  }" />
 		<div class="col-xs-12 col-sm-12 col-md-12 " align="center">
 			<form method="post" name="join_form">
 				<div align="center">
+				<input type="hidden" id="s_no" name="s_no" value="${sessionScope.mno}">
+					<input type="hidden" id="no" name="no" value="${dto.getM_no()}">
 					<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
 						style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
 						<%-- ID 입력란 --%>
@@ -120,9 +121,13 @@
 						<%-- 버튼 --%>
 						<tr align="center">
 							<td colspan="2" align="center"><input type="button"
-								value="수정" class="btn_submit btn btn-defult "> &nbsp; <input
-								type="button" value="로그아웃" id="logout_btn" class="btn btn-defult " /> &nbsp; <input
-								type="button" value="탈퇴" id="delete_btn" class="btn btn-defult " /></td>
+								value="수정" class="btn_submit btn btn-defult "> 
+								<c:if test="${sessionScope.mno >100}">
+								&nbsp; <input
+								type="button" value="로그아웃" id="logout_btn"
+								class="btn btn-defult " /> </c:if>
+								&nbsp; <input type="button"
+								value="탈퇴" id="delete_btn" class="btn btn-defult " /></td>
 						</tr>
 					</table>
 				</div>
@@ -139,7 +144,8 @@
 			onclick="closePost()" alt="닫기 버튼">
 	</div>
 
-	<script src="<%=request.getContextPath()%>/js/join.js?v=<%=System.currentTimeMillis() %>"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/join.js?v=<%=System.currentTimeMillis()%>"></script>
 
 </body>
 </html>
