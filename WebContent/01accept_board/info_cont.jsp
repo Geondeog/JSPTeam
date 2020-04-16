@@ -114,7 +114,7 @@
 		<br /><br /><br />
 		<div align="right" style="padding-right: 3%;">
 			<input class="btn contbutton" type="button" value="목록" 
-				onclick="location.href='accept_list.do?mno=-1&accept=1'" />
+				onclick="location.href='enter_list.do?mno=-1&accept=1'" />
 		</div>
 		<br />
 		<div>
