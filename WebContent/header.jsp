@@ -90,15 +90,15 @@
 							<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
-					<li><a href="enter_list.do?mno=-1&&accept=1" class="text">정보광장</a></li>
+					<li><a href="enter_list.do?mno=-1&&accept=1" class="dropdown-item" target="view">정보광장</a></li>
 					<!-- 로그인 했을 경우  && 관리자일 경우 -->
 						<c:if test="${mno <= 100 }">
-							<li><a id="mrgPage" href="enter_list.do?mno=${mno}&&accept=0" class="text">대기글 리스트</a></li>
-							<li><a id="noticePage" href="enter_list.do?mno=-1&&accept=-1" class="text">공지사항 관리</a></li>
+							<li><a id="mrgPage" href="enter_list.do?mno=${mno}&&accept=0" class="dropdown-item" target="view">대기글 리스트</a></li>
+							<li><a id="noticePage" href="enter_list.do?mno=-1&&accept=-1" class="dropdown-item" target="view">공지사항 관리</a></li>
 						</c:if>
 						<!-- 로그인 했을 경우  && 일반사용자일 경우 -->
 						<c:if test="${mno > 100 }">
-							<li><a id = "myPage" href="enter_list.do?mno=${mno}&&accept=-1" class="text">마이 리스트</a></li>
+							<li><a id = "myPage" href="enter_list.do?mno=${mno}&&accept=-1" class="dropdown-item" target="view">마이 리스트</a></li>
 						</c:if>
 						</ul>
 					

@@ -578,7 +578,7 @@ public class InfoDAO extends DAO {
 					"?," + // 댓글쓴이 번호
 					"?," + // 이 댓글의 깊이 
 					"?," + // 부모 댓글 번호 
-					"SYSDATE)";
+					"SYSDATE,'')";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, dto.getInfo_no());
 			pstmt.setString(2, dto.getCont());
