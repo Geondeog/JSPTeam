@@ -7,7 +7,7 @@
 
 <section id="content">
 	<div align="center">
-		<iframe name="view" id="view"
+		<iframe name="view" id="view" src="<%=request.getContextPath()%>/info.do"
 			style="display: block; width: 100%; height: 100vh; border: 0; scrolling: no;" onload="autoResize()"> </iframe>
 	</div>
 </section>
