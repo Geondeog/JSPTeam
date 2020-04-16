@@ -74,7 +74,7 @@ function autoResize() {
 							<span class="sr-only">(current)</span>
 					</a></li>
 
-					<li><a href="<%=request.getContextPath()%>/taste_notice.do">원두추천</a></li>
+					<li><a href="#">원두추천</a></li>
 
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

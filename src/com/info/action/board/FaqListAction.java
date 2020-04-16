@@ -65,17 +65,11 @@ public class FaqListAction implements Action {
 		request.setAttribute("endBlock", endBlock);
 		request.setAttribute("List",list);
 		
-		ActionForward forward = mnum(request);
-
-		if (forward == null) {
-			// view page로 포워딩
-			forward = new ActionForward();
+		ActionForward forward =new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/faq_list.jsp");    // 경로 지정.
 
 			return forward;
-		}
-		return forward;
 		
 	}
 }	
