@@ -11,7 +11,8 @@
 <meta name="description" content="CAFE:in">
 <meta name="keywords" content="JSP, 반응형 웹, 부트스트랩, 커피, 원두, 웹">
 <title>CAFE:in - 당신의 여유를 함께합니다</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap-3.4.1.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/bootstrap-3.4.1.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script
@@ -20,19 +21,19 @@
 </script>
 
 <script type="text/javascript">
-//iframe resize
-function autoResize() {
-	
-	var height = view.document.body.scrollHeight;
-	var iframeHeight = (height * 1.35) + 'px';
-	document.getElementById("view").style.height = iframeHeight;
-	
-	$(window).resize(function() {
+	//iframe resize
+	function autoResize() {
+
 		var height = view.document.body.scrollHeight;
 		var iframeHeight = (height * 1.35) + 'px';
 		document.getElementById("view").style.height = iframeHeight;
-	});
-}
+
+		$(window).resize(function() {
+			var height = view.document.body.scrollHeight;
+			var iframeHeight = (height * 1.35) + 'px';
+			document.getElementById("view").style.height = iframeHeight;
+		});
+	}
 </script>
 
 </head>
@@ -81,12 +82,12 @@ function autoResize() {
 						data-toggle="dropdown" role="button" aria-expanded="false">게시판
 							<span class="caret"></span>
 					</a>
-						<div class="dropdown-menu" role="menu">
-							<a href="<%=request.getContextPath()%>/faq_list.do"
-								class="dropdown-item" target="view">FAQ</a> <br /> <a
-								href="<%=request.getContextPath()%>/qna_list.do"
-								class="dropdown-item" target="view">Q&A</a>
-						</div></li>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="<%=request.getContextPath()%>/faq_list.do"
+								class="dropdown-item" target="view">FAQ</a></li>
+							<li><a href="<%=request.getContextPath()%>/qna_list.do"
+								class="dropdown-item" target="view">Q&A</a></li>
+						</ul></li>
 					<li><a href="#">회원광장</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -95,12 +96,12 @@ function autoResize() {
 						<!-- 로그인 했을 경우  && 관리자일 경우 -->
 						<c:if test="${mno <= 100 }">
 							<li><a href="<%=request.getContextPath()%>/adminpage.do"
-							target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+								target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
 						</c:if>
 						<!-- 로그인 했을 경우  && 일반사용자일 경우 -->
 						<c:if test="${mno > 100 }">
 							<li><a href="<%=request.getContextPath()%>/mypage.do"
-							target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
+								target="view">[${ MemberDAO.getInstance().getMember( sessionScope.mno ).getM_nickname() }]님</a></li>
 						</c:if>
 					</c:if>
 					<c:if test="${empty mno }">
