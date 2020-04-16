@@ -19,6 +19,22 @@
 	/* Bootstrap CDN JavaScript */
 </script>
 
+<script type="text/javascript">
+//iframe resize
+function autoResize() {
+	
+	var height = view.document.body.scrollHeight;
+	var iframeHeight = (height * 1.35) + 'px';
+	document.getElementById("view").style.height = iframeHeight;
+	
+	$(window).resize(function() {
+		var height = view.document.body.scrollHeight;
+		var iframeHeight = (height * 1.35) + 'px';
+		document.getElementById("view").style.height = iframeHeight;
+	});
+}
+</script>
+
 </head>
 
 <body>
