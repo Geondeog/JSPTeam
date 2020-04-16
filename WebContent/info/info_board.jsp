@@ -76,7 +76,7 @@ function autoResize() {
 		</div>
 
 		<div class="col-sm-10">
-			<iframe src="<%=request.getContextPath()%>/info.do" name="listview"
+			<iframe src="<%=request.getContextPath()%>/info_list.do?genre=info" name="listview"
 				id="listview"
 				style="display: block; width: 100%; height: 100vh; border: 0; scrolling: no;"
 				onload="autoResize()"> </iframe>

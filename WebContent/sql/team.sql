@@ -15,18 +15,6 @@ start with 1
 increment by 1
 nocache;
 
-
--- 게시물 View
-create view info_v as 
-select g.info_no, i.info_genre, g.info_title, i.info_hit, i.info_date
-from info i,
-(select info_no, info_title, info_file from info union
-select info_no, info_title, info_file from beans union
-select info_no, info_title, info_file from country union
-select info_no, info_title, info_file from extra) g
-where i.info_no=g.info_no and g.info_title is not null
-order by i.info_no desc;
-
 -- 원두테이블
 create table beans(
  info_no number(10) primary key,
@@ -40,13 +28,6 @@ create table beans(
  info_cont clob not null,
  info_file varchar2(3000)
 );
-
--- 원두 View
-create view beans_v as 
-select b.info_no, b.coun_no, c.info_title beans_coun, c.coun_add beans_counadd, b.beans_aroma, b.beans_acidity, b.beans_sweet, b.beans_bitter, b.beans_body, b.info_title, b.info_cont, b.info_file 
-from beans b, country c 
-where b.coun_no=c.coun_no 
-order by b.info_no desc;
 
 -- 나라테이블
 -- 아시아 1, 남미 2, 아프리카 3, 북미 4, 유럽 5, 오스트레일리아 6, 남극 7
@@ -89,6 +70,24 @@ create table blend(
  info_file varchar2(3000)
 );
 
+
+-- 원두 View
+create view beans_v as 
+select b.info_no, b.coun_no, c.info_title beans_coun, c.coun_add beans_counadd, b.beans_aroma, b.beans_acidity, b.beans_sweet, b.beans_bitter, b.beans_body, b.info_title, b.info_cont, b.info_file 
+from beans b, country c 
+where b.coun_no=c.coun_no 
+order by b.info_no desc;
+
+-- 게시물 View
+create view info_v as 
+select g.info_no, i.info_genre, g.info_title, g.info_file, i.info_hit, i.info_date
+from info i,
+(select info_no, info_title, info_file from info union
+select info_no, info_title, info_file from beans union
+select info_no, info_title, info_file from country union
+select info_no, info_title, info_file from extra) g
+where i.info_no=g.info_no and g.info_title is not null
+order by i.info_no desc;
 
 insert into country values(info_seq.nextval, 101, '아시아', '인도네시아주소', '인도네시아', '인도네시아정보', '');
 insert into country values(info_seq.nextval, 102, '아시아', '인도주소', '인도', '인도정보', '');
