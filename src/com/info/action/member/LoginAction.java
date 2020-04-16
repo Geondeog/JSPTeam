@@ -33,7 +33,9 @@ public class LoginAction implements Action {
 			// 회원의 정보를 세션 객체에 저장
 			session.setAttribute("id", dto.getM_id());
 			session.setAttribute("nickname", dto.getM_nickname());
+			session.setAttribute("userName", dto.getM_nickname());
 			session.setAttribute("mno", dto.getM_no());
+			session.setAttribute("userNo", dto.getM_no());
 
 		}
 		
