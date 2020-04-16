@@ -175,6 +175,18 @@ insert into member_in values('mrg_1','백서진','0000','010','서울','aaa@aaa'
 insert into member_in values('hong','홍길동','1234','010','대전','bbb@bbb','20/04/04',101);
 insert into member_in values('leess','이순신','1234','010','대구','ccc@ccc','20/04/05',102);
 
+-- 탈퇴 회원정보 저장 테이블
+create table member_out (
+ m_id VARCHAR2(20 BYTE) UNIQUE NOT NULL, 
+ m_nickname VARCHAR2(20 BYTE) NOT NULL, 
+ m_pwd VARCHAR2(20 BYTE) NOT NULL, 
+ m_tel VARCHAR2(20 BYTE), 
+ m_address VARCHAR2(20 BYTE), 
+ m_email VARCHAR2(50 BYTE), 
+ m_date DATE,  --탈퇴 날짜
+ m_no NUMBER(5, 0)  PRIMARY KEY
+);
+
 
 commit;
 
