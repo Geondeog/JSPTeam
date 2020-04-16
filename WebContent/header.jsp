@@ -74,10 +74,6 @@
 						href="<%=request.getContextPath()%>/info_board.do" target="view">정보
 							<span class="sr-only">(current)</span>
 					</a></li>
-
-					<li><a href="#">원두추천</a></li>
-
-
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">게시판
 							<span class="caret"></span>
