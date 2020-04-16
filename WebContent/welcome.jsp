@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<div align="center" style="margin-top: 10%; margin-bottom: 10%;">
+	<div align="center" style="margin-top: 2%; margin-bottom: 2%;">
 		<img alt="welcome"
-			src="<%=request.getContextPath()%>/images/welcome.jpg" width="50%">
+			src="<%=request.getContextPath()%>/images/welcomeimg.jpg" width="95%">
 	</div>
 
 </body>
