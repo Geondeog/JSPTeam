@@ -28,7 +28,7 @@ public class UpdateCheckOKAction implements Action {
 		if(res > 0) {
 			out.println("<script>");
 			out.println("alert('수정 완료')");
-			out.println("location.href='goWaitingCont.do?board_no="+board_no+"'");
+			out.println("location.href='goWorMCont.do?board_no="+board_no+"'");
 			out.println("</script>");
 		} else {
 			out.println("<script>");

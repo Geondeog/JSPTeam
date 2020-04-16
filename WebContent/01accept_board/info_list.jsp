@@ -183,27 +183,27 @@
 			<ul class="pagination">
 				<c:if test="${page > block }">
 					<li class="paginate_button previous">
-						<a href="accept_list.do?page=1&&mno=-1&&accept=1">◀◀</a>
+						<a href="enter_list.do?page=1&&mno=-1&&accept=1">◀◀</a>
 					</li>
 					<li>
 						<a href=
-						"accept_list.do?page=${startBlock-1 }&&mno=-1&&accept=1"
+						"enter_list.do?page=${startBlock-1 }&&mno=-1&&accept=1"
 							>◀</a>
 					</li>
 				</c:if>
 				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 					<li>
-						<a href="accept_list.do?page=${i }&&mno=-1&&accept=1"
+						<a href="enter_list.do?page=${i }&&mno=-1&&accept=1"
 						id="${i }">${i }</a>
 					</li>
 				</c:forEach>
 				<c:if test="${endBlock < allPage }">
 					<li>
-						<a href="accept_list.do?page=${endBlock+1 }&&mno=-1&&accept=1"
+						<a href="enter_list.do?page=${endBlock+1 }&&mno=-1&&accept=1"
 						>▶</a>
 					</li>
 					<li>
-						<a href="accept_list.do?page=${allPage }&&mno=-1&&accept=1">▶▶</a>
+						<a href="enter_list.do?page=${allPage }&&mno=-1&&accept=1">▶▶</a>
 					</li>
 				</c:if>
 			</ul>

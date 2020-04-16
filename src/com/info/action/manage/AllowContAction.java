@@ -36,7 +36,7 @@ public class AllowContAction implements Action {
 		if(res > 0) {
 			out.println("<script>");
 			out.println("alert('게시 성공.')");
-			out.println("location.href='temp_list.do?mno="+userNo+"&&accept=0'");
+			out.println("location.href='enter_list.do?mno="+userNo+"&&accept=0'");
 			out.println("</script>");
 		} else {
 			out.println("<script>");
