@@ -46,9 +46,15 @@
 
 	});
 </script>
+<style type="text/css">
+	
+	
+	
+</style>
 </head>
 <body>
 	<section id="content">
+		<div class="container">
 		<div class="col-xs-12 col-sm-12 col-md-12 ">
 			<hr width="100%" class="title" />
 			<h2 style="font-weight: bold;">원두 취향 테스트</h2>
@@ -66,7 +72,7 @@
 				<c:if test="${!empty list}">
 					<input type="hidden" name="count" value="${count }">
 					<c:forEach items="${list }" var="dto">
-						<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
+						<table class="col-xs-5 col-md-5 col-lg-5 table table-line text-center write"
 							style="margin-left: 20%; margin-top: 2%; margin-bottom: 2%; width: 60%">
 							<tr>
 								<td><h4>${dto.getQue_title() }</h4></td>
@@ -102,6 +108,7 @@
 			</div>
 
 		</form>
+		</div>
 	</section>
 </body>
 </html>
