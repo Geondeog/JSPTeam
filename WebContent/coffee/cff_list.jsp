@@ -48,7 +48,7 @@
 </head>
 <body>
 
-	<div class="container" style="margin-top: 4%">
+	<div class="container" style="margin-top: 2%">
 		<table class="space4">
 			<c:set var="list" value="${List }" />
 			<c:if test="${!empty list }">
@@ -57,7 +57,7 @@
 					<tr class="space6">
 						<td><a
 							href="cff_cont.do?no=${dto.getCff_no() }&page=${page }">
-								<hr style="border: solid;"> <img
+								<hr style="border: solid;" /> <img
 								src="images/${dto.getCff_file() }">
 						</a>
 
@@ -69,13 +69,13 @@
 				</c:forEach>
 			</c:if>
 			<c:if test="${empty list }">
-            <tr>
-               <td colspan="4">
-                  <h3>검색된 레코드가 없습니다.</h3>
-               </td>
-            </tr>
-         
-         </c:if>
+				<tr>
+					<td colspan="4">
+						<h3>검색된 레코드가 없습니다.</h3>
+					</td>
+				</tr>
+
+			</c:if>
 
 
 		</table>
@@ -136,8 +136,8 @@
 				<option value="title">글제목</option>
 				<option value="cont">글내용</option>
 				<option value="title_cont">글제목+글내용</option>
-			</select> <input type="text" name="find_name"> <input type="submit" class="btn btn-defult "
-				value="검색">
+			</select> <input type="text" name="find_name"> <input type="submit"
+				class="btn btn-defult " value="검색">
 		</form>
 
 	</div>
