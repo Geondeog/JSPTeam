@@ -160,6 +160,7 @@ h1 {
            <input type="hidden" name="qna_group"  value="${dto.getQna_group()  }"  />
            <input type="hidden" name="qna_step"  value="${dto.getQna_step()  }"  />
            <input type="hidden" name="qna_indent"  value="${dto.getQna_indent()  }"  />
+           <input type="hidden" name="qna_modify"  value="${dto.getQna_modify()  }"  />
 
 			<table border="0" cellspacing="0" style="width:100%;">
 				<tr>
