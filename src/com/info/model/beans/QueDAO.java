@@ -235,4 +235,20 @@ public class QueDAO extends DAO {
 		return list;
 	}
 
+	public void updateV(int parseInt) {
+		
+		
+	}
+
+	/*public void updateV(int parseInt, int parseInt2) {
+		sql="update "
+				update info set info_hit = info_hit + 1 where info_no=?
+	}*/
+
+	public void updateV(QueMDTO dto, int max) {
+		int q_no = dto.getQ_no();
+		String sql = dto.getBeans_aroma() == max ? null : "update que_v set beans_aroma = 0 where q_no="+q_no;
+		
+	}
+
 }

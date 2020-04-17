@@ -20,6 +20,8 @@ public class BeansListAction implements Action {
 		System.out.println(max);
 		if(no != null) {
 		QueMDTO dto = dao.queDTO(Integer.parseInt(no));
+		dao.updateV(dto, Integer.parseInt(max));
+		
 		
 		
 		}

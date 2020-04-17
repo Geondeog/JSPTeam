@@ -49,7 +49,8 @@ th, td {
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<tr>
-							<td>${dto.getM_no() }</td>
+							<td>${dto.getM_no() }<input type="hidden" id="no"
+								value="${dto.getQ_no() }" /></td>
 							<td>${dto.getBeans_aroma() }<input type="hidden" id="aroma"
 								value="${dto.getBeans_aroma() }" />
 							</td>
@@ -62,11 +63,9 @@ th, td {
 							<td>${dto.getBeans_body() }<input type="hidden" id="body"
 								value="${dto.getBeans_body() }" /></td>
 							<td>${dto.getM_date() }</td>
-							<td><input type="hidden" id="max"
-								 />
-							<input type="button" value="당신의 원두!"
-								class="btn btn-defult "
-								onclick="location.href = '<%=request.getContextPath()%>/beans_list.do?q_no='${dto.getQ_no() }"></td>
+							<td><input type="button"
+								value="당신의 원두!" class="btn btn-defult btn_max"
+								></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -80,9 +79,15 @@ th, td {
 	</div>
 
 	<script type="text/javascript">
-	var arr = [ $("#aroma").val(),  $("#acidity").val(),  $("#sweet").val(),  $("#bitter").val(),  $("#body").val()];
-	var max = Math.max(arr);
-	$("#max").val(max)
+	$(function() {
+	$(".btn_max").click(function() {
+		var no = $("#no").val();
+		var arr = [ $("#aroma").val(),  $("#acidity").val(),  $("#sweet").val(),  $("#bitter").val(),  $("#body").val()];
+		var max = Math.max.apply(null, arr);
+		location.href = 'beans_list.do?q_no='+no+'&max='+max;
+	});
+});
+	
 	</script>
 
 
