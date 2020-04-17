@@ -16,7 +16,7 @@
 	
 .title { 
 
-	border-top:1px solid #F12121;
+	border-top:1px solid gray;
 	margin: 3%;
  } 
  .table-line{
