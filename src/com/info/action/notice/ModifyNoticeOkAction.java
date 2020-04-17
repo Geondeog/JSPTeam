@@ -41,11 +41,15 @@ public class ModifyNoticeOkAction extends CreateThumbnail implements Action{
 		/**********************
 		 * 첨부 파일을 받아오는 작업  *
 		 **********************/
-		if(request.getParameter("thumbnail") != null && !request.getParameter("thumbnail").equals(file)) {
-			file_name = request.getParameter("thumbnail");
-			String fileDBName = getThumbnail(request,response,file_name);
+		if(request.getParameter("thumbnail") != "") {
+			if(request.getParameter("thumbnail").equals(file)) {
+				dto.setBoard_file(file);
+			} else {
+				file_name = request.getParameter("thumbnail");
+				String fileDBName = getThumbnail(request,response,file_name);
 				// DB에 저장될 파일 이름을 dto에 저장
-			dto.setBoard_file(fileDBName);
+				dto.setBoard_file(fileDBName);
+			}
 		} else {
 			dto.setBoard_file(file);
 		}

@@ -16,7 +16,7 @@
 	
 .title { 
 
-	border-top:1px solid #F12121;
+	border-top:1px solid gray;
 	margin: 3%;
  } 
  .table-line{
@@ -88,8 +88,8 @@
 					<td >
 						<c:if test="${ndto.getBoard_file() != null }">
 						<img class=${i } 
-						  onclick="location.href='getNoticeCont.do?board_no=${dto.getBoard_no() }&&category=accept"
-						  src="${dto.getBoard_file() }"
+						  onclick="location.href='getNoticeCont.do?board_no=${ndto.getBoard_no() }&&category=accept"
+						  src="${ndto.getBoard_file() }"
 							alt="thumbNail" />
 						</c:if>
 					</td>

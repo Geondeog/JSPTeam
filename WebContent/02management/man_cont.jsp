@@ -21,7 +21,7 @@
 <style type="text/css">
 a {
 	color: #787878;
-	text-shadow: 3px 3px 3px #dcdcdc;
+	text-shadow: 3px 3px 3px #gray;
 	font-weight: bold;
 	font-size: 16px;
 }
