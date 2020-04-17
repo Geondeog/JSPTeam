@@ -75,7 +75,7 @@ th, td {
 					style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
 					<c:forEach items="${beanslist }" var="dto">
 						<tr>
-							<th class="text-center">제목</th><td><a
+							<th class="text-center">당신의 취향은?</th><td><a
 								href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=beans">
 									${dto.getInfo_title() } </a></td>
 						</tr>

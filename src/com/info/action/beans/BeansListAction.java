@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.info.action.Action;
 import com.info.action.ActionForward;
@@ -31,6 +32,15 @@ public class BeansListAction implements Action {
 				max = arr[i];
 			    }
 				
+			}
+			
+			String nowPage = request.getParameter("page");
+			HttpSession session = request.getSession();
+			int mnum = session.getAttribute("mno") != null ? (int) session.getAttribute("mno") : -1;
+
+			if (mnum != -1) {
+				List<QueMDTO> list = tastePaging(request, mnum, nowPage);
+				request.setAttribute("list", list);
 			}
 			
 			dao.updateV(dto, max);
