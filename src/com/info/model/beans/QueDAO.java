@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.print.DocFlavor.STRING;
 
 import com.info.model.DAO;
+import com.info.model.info.BeansDTO;
 import com.info.model.info.InfoDTO;
 
 public class QueDAO extends DAO {
@@ -67,7 +68,7 @@ public class QueDAO extends DAO {
 			closeConn(con, pstmt, rs);
 		}
 	}
-	
+
 	public void resetHit() {
 		try {
 			con = openConn();
@@ -162,6 +163,68 @@ public class QueDAO extends DAO {
 				dto.setBeans_bitter(rs.getInt("beans_bitter"));
 				dto.setBeans_body(rs.getInt("beans_body"));
 				dto.setM_date(rs.getString("m_date"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return list;
+	}
+
+	public QueMDTO queDTO(int mno) {
+		QueMDTO dto = new QueMDTO();
+		try {
+			con = openConn();
+			sql = "select * from que_m where q_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mno);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dto.setQ_no(rs.getInt("q_no"));
+				dto.setM_no(rs.getInt("m_no"));
+				dto.setBeans_aroma(rs.getInt("beans_aroma") + 3);
+				dto.setBeans_acidity(rs.getInt("beans_acidity") + 3);
+				dto.setBeans_sweet(rs.getInt("beans_sweet") + 3);
+				dto.setBeans_bitter(rs.getInt("beans_bitter") + 3);
+				dto.setBeans_body(rs.getInt("beans_body") + 3);
+				dto.setM_date(rs.getString("m_date"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return dto;
+	}
+
+	public List<BeansDTO> beansList(QueMDTO qdto) {
+		List<BeansDTO> list = new ArrayList<>();
+		try {
+			con = openConn();
+			sql = "select * from beans where beans_aroma = ? or beans_acidity = ? or beans_sweet = ? or beans_bitter = ? or beans_body = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qdto.getBeans_aroma());
+			pstmt.setInt(2, qdto.getBeans_acidity());
+			pstmt.setInt(3, qdto.getBeans_sweet());
+			pstmt.setInt(4, qdto.getBeans_bitter());
+			pstmt.setInt(5, qdto.getBeans_body());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BeansDTO dto = new BeansDTO();
+				dto.setInfo_no(rs.getInt("info_no"));
+				dto.setCoun_no(rs.getInt("Coun_no"));
+				dto.setBeans_coun(rs.getString("beans_coun"));
+				dto.setBeans_counadd(rs.getString("beans_counadd"));
+				dto.setBeans_aroma(rs.getInt("beans_aroma"));
+				dto.setBeans_acidity(rs.getInt("beans_acidity"));
+				dto.setBeans_sweet(rs.getInt("beans_sweet"));
+				dto.setBeans_bitter(rs.getInt("beans_bitter"));
+				dto.setBeans_body(rs.getInt("beans_body"));
+				dto.setInfo_title(rs.getString("info_title"));
+				dto.setInfo_cont(rs.getString("info_cont"));
+				dto.setInfo_file(rs.getString("info_file"));
 				list.add(dto);
 			}
 		} catch (Exception e) {
