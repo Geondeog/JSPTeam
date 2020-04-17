@@ -84,7 +84,7 @@
 							<li><a href="<%=request.getContextPath()%>/qna_list.do"
 								class="dropdown-item" target="view">Q&A</a></li>
 						</ul></li>
-					
+					<li><a href="<%=request.getContextPath()%>/taste_beans.do" target="view">원두추천</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">회원광장
 							<span class="caret"></span>

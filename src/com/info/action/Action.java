@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.info.model.DTO;
+import com.info.model.beans.QueDAO;
+import com.info.model.beans.QueMDTO;
 import com.info.model.info.InfoDAO;
 import com.info.model.info.InfoDTO;
 import com.info.model.user.SquareDAO;
@@ -114,6 +116,49 @@ public interface Action {
 		}
 
 		request.setAttribute("genre", find_name);
+		request.setAttribute("page", page);
+		request.setAttribute("block", block);
+		request.setAttribute("allPage", allPage);
+		request.setAttribute("startNo", startNo);
+		request.setAttribute("endNo", endNo);
+		request.setAttribute("startBlock", startBlock);
+		request.setAttribute("endBlock", endBlock);
+
+		return list;
+	}
+	
+	public default List<QueMDTO> tastePaging(HttpServletRequest request, int mno, String nowPage) {
+		int page = 1;
+		if (nowPage != null) {
+			page = Integer.parseInt(nowPage);
+		}
+		int total = 0; // DB 상의 레코드 전체 수 (게시물의 수)
+		int allPage = 0; // 전체 페이지 수
+		// 해당 페이지에서 시작 번호
+		int startNo = (page * size) - (size - 1);
+		// 해당 페이지의 끝 번호
+		int endNo = (page * size);
+		// 해당 페이지의 시작 블럭
+		int startBlock = (((page - 1) / block) * block) + 1;
+		// 해당 페이지의 마지막 블럭
+		int endBlock = (((page - 1) / block) * block) + block;
+
+		List<QueMDTO> list = null;
+		QueDAO dao = QueDAO.getInstance();
+		total = dao.getCount(mno);
+		// 검색된 전체 게시물의 수를 한 페이지당 보여질 게시물의 수로 나누어 전체 페이지 수 구하기(나머지는 무조건 올림)
+		allPage = (int) Math.ceil(total / (double) size);
+
+		if (allPage > 0) {
+			if (endBlock > allPage)
+				endBlock = allPage;
+			list = dao.list(mno, startNo, endNo);// 현재 페이지에 해당하는 글 목록
+		}
+		if (list == null) {
+			page = 0;
+		}
+
+		request.setAttribute("genre", mno);
 		request.setAttribute("page", page);
 		request.setAttribute("block", block);
 		request.setAttribute("allPage", allPage);
