@@ -81,7 +81,7 @@ hr {
 </head>
 <body style="width: 95%">
 
-	<div class="container" style="margin-top: 4%">
+	<div class="container" style="margin-top: 2%">
 		<c:set var="dto" value="${cont }" />
 		<input type="hidden" id="no" value="${dto.getCff_no() }">
 		<table style="margin-left: auto; margin-right: auto;">
