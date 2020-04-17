@@ -42,7 +42,7 @@
 	#cont{
 		border-right: 1px solid gray;	
 		border-left: 1px solid gray;	
-		background-color: lightgray;	
+		background-color: #eee;	
 	}
 	#title{
 		font-size: 18px;
@@ -105,6 +105,12 @@
 		background-color: #eee;
 		border:0.5px solid #b4b4b4;
 }
+	label{
+		background-color: #eee;
+	}
+	pre{
+		background-color: #eee;
+	}
 </style>
 </head>
 <body>

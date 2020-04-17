@@ -68,7 +68,7 @@
 		<div class="row" align="center">
 			<div class="col-xs-1 col-sm-1 col-md-1 "></div>
 			<div class="col-xs-10 col-sm-10 col-md-10 ">
-			<form action="<%=request.getContextPath() %>/upload_notice_ok.do" method="post" id="frm">
+			<form action="<%=request.getContextPath() %>/modify_notice.do" method="post" id="frm">
 				<input type="hidden" name="mno" value="${userNo }"/>
 				<input type="hidden" name="mname" value="${userName }" />
 				<input type="hidden" name="board_no" value="${Cont.getBoard_no() }" />
@@ -90,7 +90,7 @@
 				<div class="row" align="center">
 					<div class="col-md-8 col-md-offset-2" style="display: none;">
 						<input type="text" id="thumbnail"name="thumbnail" value="${Cont.getBoard_file() }"
-							style="width: 80%;"readonly />
+							style="width: 80%;" />
 					</div>
 				</div>
 				<br />
