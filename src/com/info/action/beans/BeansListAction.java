@@ -22,8 +22,6 @@ public class BeansListAction implements Action {
 		QueMDTO dto = dao.queDTO(Integer.parseInt(no));
 		
 		
-		
-		
 		}
 		
 		return null;
