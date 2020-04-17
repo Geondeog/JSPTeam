@@ -312,7 +312,7 @@
 					 <th width="20%" class="text-center">작성일자</th>
 				</tr>
 			</thead>
-			<c:if test="${pre.getBoard_title() != null }">
+			<c:if test="${pre.getBoard_no() != 0 }">
 			<c:if test="${pre.getBoard_title() != '삭제된 게시글입니다.' }">
 				<tr class="text-align preNext"
 					onclick="location.href='add1HitInfo.do?board_no=${pre.getBoard_no() }'">
@@ -332,8 +332,7 @@
 				</thead>
 			</c:if>
 			</c:if>
-			<c:if test="${userNo >100 }">
-			<c:if test="${next.getBoard_title()!= null }">
+			<c:if test="${next.getBoard_no()!= 0 }">
 			<c:if test="${next.getBoard_title() != '삭제된 게시글입니다.' }">
 				<tr class="text-align preNext" 
 					onclick="location.href='add1HitInfo.do?board_no=${pre.getBoard_no() }'">
@@ -353,7 +352,6 @@
 					<td align="left" colspan="4" style="cursor: default;">${next.getBoard_title() }</td>
 				</tr>
 				</thead>
-			</c:if>
 			</c:if>
 			</c:if>
 		</table>

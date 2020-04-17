@@ -263,6 +263,7 @@ public class SquareDAO extends DAO{
 				dto.setBoard_step(rs.getInt("board_step"));
 				dto.setBoard_writer(rs.getString("board_writer"));
 				list.add(dto);
+				System.out.println("받은 번호 : " + dto.getBoard_no());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
