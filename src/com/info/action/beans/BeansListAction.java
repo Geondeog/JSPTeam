@@ -18,12 +18,22 @@ public class BeansListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		QueDAO dao = QueDAO.getInstance();
 		String no = request.getParameter("q_no");
-		String max = request.getParameter("max");
-		System.out.println(max);
 		if (no != null) {
 			int mno = Integer.parseInt(no);
 			QueMDTO dto = dao.queDTO(mno);
-			dao.updateV(dto, Integer.parseInt(max));
+			int[] arr = {dto.getBeans_acidity(), dto.getBeans_aroma(), dto.getBeans_bitter(), dto.getBeans_bitter(), dto.getBeans_body(), dto.getBeans_sweet()};
+			
+			int max = arr[0];
+			
+			for(int i=0;i<arr.length;i++) {
+			    if(max<arr[i]) {
+				//max의 값보다 array[i]이 크면 max = array[i]
+				max = arr[i];
+			    }
+				
+			}
+			
+			dao.updateV(dto, max);
 			dto = dao.queMDTO(mno);
 			List<BeansDTO> list = dao.beansList(dto);
 			request.setAttribute("beanslist", list);
