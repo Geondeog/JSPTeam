@@ -21,9 +21,14 @@ public class QuestionAction implements Action {
 		request.setAttribute("list", list);
 		request.setAttribute("count", list.size());
 
-		ActionForward forword = new ActionForward();
-		forword.setRedirect(false);
-		forword.setPath("./beans/taste.jsp");
-		return forword;
+		ActionForward forward = mnum(request);
+		if (forward == null) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./beans/taste.jsp");
+			return forward;
+		}
+		return forward;
+
 	}
 }
