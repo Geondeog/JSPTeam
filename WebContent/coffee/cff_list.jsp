@@ -53,7 +53,7 @@
 			<c:set var="list" value="${List }" />
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
-
+ 
 					<tr class="space6">
 						<td><a
 							href="cff_cont.do?no=${dto.getCff_no() }&page=${page }">
