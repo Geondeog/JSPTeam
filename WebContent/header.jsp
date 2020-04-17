@@ -41,7 +41,7 @@
 <body>
 
 	<%-- 헤더 부분 --%>
-	<header>
+	<header onclick="location.href='<%=request.getContextPath()%>'">
 		<img alt="Banner" src="images/CAFE_in_logo_1.png"
 			class="img-responsive" id="top_banner">
 	</header>
