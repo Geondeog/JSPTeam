@@ -49,7 +49,8 @@ th, td {
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<tr>
-							<td>${dto.getM_no() }</td>
+							<td>${dto.getM_no() }<input type="hidden" id="no"
+								value="${dto.getQ_no() }" /></td>
 							<td>${dto.getBeans_aroma() }<input type="hidden" id="aroma"
 								value="${dto.getBeans_aroma() }" />
 							</td>
@@ -62,11 +63,8 @@ th, td {
 							<td>${dto.getBeans_body() }<input type="hidden" id="body"
 								value="${dto.getBeans_body() }" /></td>
 							<td>${dto.getM_date() }</td>
-							<td><input type="hidden" id="max"
-								 />
-							<input type="button" value="당신의 원두!"
-								class="btn btn-defult "
-								onclick="location.href = '<%=request.getContextPath()%>/beans_list.do?q_no='${dto.getQ_no() }"></td>
+							<td><input type="button" value="당신의 원두!"
+								class="btn btn-defult btn_max"></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -77,12 +75,40 @@ th, td {
 				</c:if>
 			</table>
 		</div>
+		<c:if test="${!empty beanslist }">
+			<div>
+				<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
+					style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
+					<c:forEach items="${beanslist }" var="dto">
+						<tr>
+							<th class="text-center">제목</th>
+						</tr>
+
+						<tr>
+							<td><a
+								href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=beans">
+									${dto.getInfo_title() } </a></td>
+						</tr>
+					</c:forEach>
+
+				</table>
+			</div>
+		</c:if>
 	</div>
 
 	<script type="text/javascript">
-	var arr = [ $("#aroma").val(),  $("#acidity").val(),  $("#sweet").val(),  $("#bitter").val(),  $("#body").val()];
-	var max = Math.max(arr);
-	$("#max").val(max)
+		$(function() {
+			$(".btn_max").click(
+					function() {
+						var no = $("#no").val();
+						var arr = [ $("#aroma").val(), $("#acidity").val(),
+								$("#sweet").val(), $("#bitter").val(),
+								$("#body").val() ];
+						var max = Math.max.apply(null, arr);
+						location.href = 'beans_list.do?q_no=' + no + '&max='
+								+ max;
+					});
+		});
 	</script>
 
 

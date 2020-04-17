@@ -172,8 +172,34 @@ public class QueDAO extends DAO {
 		}
 		return list;
 	}
-
+	
 	public QueMDTO queDTO(int mno) {
+		QueMDTO dto = new QueMDTO();
+		try {
+			con = openConn();
+			sql = "select * from que_m where q_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mno);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dto.setQ_no(rs.getInt("q_no"));
+				dto.setM_no(rs.getInt("m_no"));
+				dto.setBeans_aroma(rs.getInt("beans_aroma"));
+				dto.setBeans_acidity(rs.getInt("beans_acidity"));
+				dto.setBeans_sweet(rs.getInt("beans_sweet"));
+				dto.setBeans_bitter(rs.getInt("beans_bitter"));
+				dto.setBeans_body(rs.getInt("beans_body"));
+				dto.setM_date(rs.getString("m_date"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		return dto;
+	}
+
+	public QueMDTO queMDTO(int mno) {
 		QueMDTO dto = new QueMDTO();
 		try {
 			con = openConn();
@@ -215,8 +241,6 @@ public class QueDAO extends DAO {
 				BeansDTO dto = new BeansDTO();
 				dto.setInfo_no(rs.getInt("info_no"));
 				dto.setCoun_no(rs.getInt("Coun_no"));
-				dto.setBeans_coun(rs.getString("beans_coun"));
-				dto.setBeans_counadd(rs.getString("beans_counadd"));
 				dto.setBeans_aroma(rs.getInt("beans_aroma"));
 				dto.setBeans_acidity(rs.getInt("beans_acidity"));
 				dto.setBeans_sweet(rs.getInt("beans_sweet"));
@@ -233,6 +257,48 @@ public class QueDAO extends DAO {
 			closeConn(con, pstmt, rs);
 		}
 		return list;
+	}
+
+	public void updateV(int parseInt) {
+
+	}
+
+	public void updateV(QueMDTO dto, int max) {
+		int q_no = dto.getQ_no();
+		String sql = dto.getBeans_aroma() == max ? null : "update que_v set beans_aroma = 0 where q_no=" + q_no;
+		try {
+			con = openConn();
+			if(sql != null ) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.executeUpdate();
+				sql = dto.getBeans_acidity() == max ? null : "update que_v set beans_aroma = 0 where q_no=" + q_no;
+				if(sql != null ) {
+					pstmt = con.prepareStatement(sql);
+					pstmt.executeUpdate();
+					sql = dto.getBeans_sweet() == max ? null : "update que_v set beans_aroma = 0 where q_no=" + q_no;
+					if(sql != null ) {
+						pstmt = con.prepareStatement(sql);
+						pstmt.executeUpdate();
+						sql = dto.getBeans_bitter() == max ? null : "update que_v set beans_aroma = 0 where q_no=" + q_no;
+						if(sql != null ) {
+							pstmt = con.prepareStatement(sql);
+							pstmt.executeUpdate();
+							sql = dto.getBeans_body() == max ? null : "update que_v set beans_aroma = 0 where q_no=" + q_no;
+							if(sql != null ) {
+								pstmt = con.prepareStatement(sql);
+								pstmt.executeUpdate();
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(con, pstmt, rs);
+		}
+		
+
 	}
 
 }
