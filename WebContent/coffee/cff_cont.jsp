@@ -61,7 +61,7 @@ hr {
 								jAlert("삭제완료", "성공", function() {
 									location.href = "cff_list.do";
 								});
-							} else {
+							} else { 
 								jAlert("삭제실패", "실패");
 								hitory.back();
 							}
