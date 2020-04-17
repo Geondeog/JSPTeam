@@ -21,6 +21,13 @@
 th, td {
 	text-align: center;
 }
+
+.back {
+	background-image:
+		url('images/coffee.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 </style>
 <body>
 
@@ -50,15 +57,15 @@ th, td {
 					<c:forEach items="${list }" var="dto">
 						<tr>
 							<td>${dto.getM_no() }</td>
-							<td>${dto.getBeans_aroma() }
-							</td>
+							<td>${dto.getBeans_aroma() }</td>
 							<td>${dto.getBeans_acidity() }</td>
 							<td>${dto.getBeans_sweet() }</td>
 							<td>${dto.getBeans_bitter() }</td>
 							<td>${dto.getBeans_body() }</td>
 							<td>${dto.getM_date() }</td>
 							<td><input type="button" value="당신의 원두!"
-								class="btn btn-defult" onclick="location.href = 'beans_list.do?q_no=${dto.getQ_no() }'"></td>
+								class="btn btn-defult"
+								onclick="location.href = 'beans_list.do?q_no=${dto.getQ_no() }'"></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -70,12 +77,13 @@ th, td {
 			</table>
 		</div>
 		<c:if test="${!empty beanslist }">
-			<div>
+			<div class="back">
 				<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
 					style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
 					<c:forEach items="${beanslist }" var="dto">
 						<tr>
-							<th class="text-center">당신의 취향은?</th><td><a
+							<th class="text-center">당신의 취향은?</th>
+							<td><a
 								href="info_cont.do?no=${dto.getInfo_no()}&page=${page}&genre=beans">
 									${dto.getInfo_title() } </a></td>
 						</tr>
