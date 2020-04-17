@@ -105,7 +105,7 @@ public class QueDAO extends DAO {
 		int result = 0;
 		try {
 			con = openConn();
-			sql = "insert into que_m values(?, ?, ?, ?, ?, ?, sysdate)";
+			sql = "insert into que_m values(q_seq.nextval,?, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mnum);
 			pstmt.setInt(2, que.get("beans_aroma"));
@@ -146,7 +146,7 @@ public class QueDAO extends DAO {
 		List<QueMDTO> list = new ArrayList<>();
 		try {
 			con = openConn();
-			sql = "select * from (select p.*, row_number() over(order by m_date desc) rnum from que_m p where m_no = ?) where rnum between ? and ?";
+			sql = "select * from (select p.*, row_number() over(order by q_no desc) rnum from que_m p where m_no = ?) where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mno);
 			pstmt.setInt(2, startNo);
@@ -154,6 +154,7 @@ public class QueDAO extends DAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				QueMDTO dto = new QueMDTO();
+				dto.setQ_no(rs.getInt("q_no"));
 				dto.setM_no(rs.getInt("m_no"));
 				dto.setBeans_aroma(rs.getInt("beans_aroma"));
 				dto.setBeans_acidity(rs.getInt("beans_acidity"));

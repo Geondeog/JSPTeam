@@ -2,6 +2,7 @@ package com.info.model.beans;
 
 public class QueMDTO {
 	
+	private int q_no;
 	private int m_no;
 	private int beans_aroma;
 	private int beans_acidity;
@@ -10,6 +11,12 @@ public class QueMDTO {
 	private int beans_body;
 	private String m_date;
 	
+	public int getQ_no() {
+		return q_no;
+	}
+	public void setQ_no(int q_no) {
+		this.q_no = q_no;
+	}
 	public int getM_no() {
 		return m_no;
 	}

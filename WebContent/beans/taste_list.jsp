@@ -43,6 +43,7 @@ th, td {
 					<th>쓴맛</th>
 					<th>바디</th>
 					<th>테스트시행일</th>
+					<th>추천원두보기</th>
 				</tr>
 
 				<c:if test="${!empty list }">
@@ -55,12 +56,14 @@ th, td {
 							<td>${dto.getBeans_bitter() }</td>
 							<td>${dto.getBeans_body() }</td>
 							<td>${dto.getM_date() }</td>
+							<td><input type="button" value="당신의 원두!" class="btn btn-defult "
+					onclick="location.href = '<%=request.getContextPath()%>/beans_list.do?q_no='${dto.getQ_no() }"></td>
 						</tr>
 					</c:forEach>
 				</c:if>
 				<c:if test="${empty list }">
 					<tr>
-						<td colspan="4"><h3>검색된 레코드가 없습니다.</h3></td>
+						<td colspan="8"><h3>검색된 레코드가 없습니다.</h3></td>
 					</tr>
 				</c:if>
 			</table>
