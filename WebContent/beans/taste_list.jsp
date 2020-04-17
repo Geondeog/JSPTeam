@@ -22,12 +22,6 @@ th, td {
 	text-align: center;
 }
 
-.back {
-	background-image:
-		url('images/coffee.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
 </style>
 <body>
 
@@ -76,10 +70,13 @@ th, td {
 				</c:if>
 			</table>
 		</div>
+		
 		<c:if test="${!empty beanslist }">
-			<div class="back">
+			<div align="center">
+				<img alt="제목" src="<%=request.getContextPath()%>/images/커피이미지.png">
+				<br /> <br />
 				<table class="col-xs-5 col-md-5 col-lg-5 table table-line write"
-					style="margin-left: 10%; margin-top: 2%; margin-bottom: 2%; width: 80%">
+					style="margin-left: 20%; margin-top: 2%; margin-bottom: 2%; width: 60%">
 					<c:forEach items="${beanslist }" var="dto">
 						<tr>
 							<th class="text-center">당신의 취향은?</th>

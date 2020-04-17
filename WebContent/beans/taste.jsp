@@ -55,7 +55,7 @@
 <body>
 	<section id="content">
 		<div class="container">
-		<div class="col-xs-12 col-sm-12 col-md-12 ">
+		<div class="col-xs-10 col-sm-10 col-md-10 " style="margin-left: 15%;">
 			<hr width="100%" class="title" />
 			<h2 style="font-weight: bold;">원두 취향 테스트</h2>
 			<hr width="100%" class="title" />
