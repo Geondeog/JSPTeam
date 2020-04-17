@@ -17,7 +17,7 @@ public class NotAllowAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 체크된 값을 board_show=0으로 만들어주는 클래스
 		String[] value = request.getParameterValues("is_check");
-		boolean result = false;
+		int result = 0;
 		for(int i = 0; i < value.length; i++) {
 			SquareDAO dao = SquareDAO.getInstance();
 			NoticeDTO dto = dao.getNoticeContent(Integer.parseInt(value[i]));
@@ -26,7 +26,7 @@ public class NotAllowAction implements Action {
 		}
 		
 		PrintWriter out = response.getWriter();
-		if(result) {
+		if(result >0) {
 			out.println("<script>");
 			out.println("alert('게시 취소 성공.')");
 			out.println("location.href='enter_list.do?mno=-1&&accept=-1'");

@@ -66,11 +66,11 @@ public class ModifyNoticeOkAction extends CreateThumbnail implements Action{
 		dto.setBoard_title(title);
 		dto.setBoard_cont(cont);
 		
-		boolean result = dao.uploadToInfo(dto);
+		int result = dao.uploadToInfo(dto);
 		
 		PrintWriter out = response.getWriter();
 		
-		if(result == true) {
+		if(result >0) {
 			out.println("<script>");
 			out.println("alert('게시 성공')");
 			out.println("location.href='getNoticeCont.do?board_no="+board_no+"'");

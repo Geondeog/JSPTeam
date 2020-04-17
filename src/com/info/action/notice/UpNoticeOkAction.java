@@ -25,15 +25,20 @@ public class UpNoticeOkAction implements Action {
 		
 		System.out.println(dto.getBoard_cont());
 		
-		boolean result = dao.uploadToInfo(dto);
+		int result = dao.uploadToInfo(dto);
 		
 		System.out.println(result);
 		
 		PrintWriter out = response.getWriter();
 		
-		if(result == true) {
+		if(result >0) {
 			out.println("<script>");
 			out.println("alert('게시 성공')");
+			out.println("location.href='enter_list.do?mno=-1&&accept=-1'");
+			out.println("</script>");
+		} else if(result == -1) {
+			out.println("<script>");
+			out.println("alert('게시된 공지사항이 5개 이상인지 확인해주세요.')");
 			out.println("location.href='enter_list.do?mno=-1&&accept=-1'");
 			out.println("</script>");
 		} else {

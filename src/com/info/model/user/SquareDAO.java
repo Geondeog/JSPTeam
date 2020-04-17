@@ -771,8 +771,8 @@ public class SquareDAO extends DAO{
 
 	
 	// 공지사항을 수정하는 메소드
-	public boolean uploadToInfo(NoticeDTO dto) {
-		boolean result = true;
+	public int uploadToInfo(NoticeDTO dto) {
+		int result = 0;
 		System.out.println(result);
 		try {
 			int count = 0;
@@ -786,7 +786,7 @@ public class SquareDAO extends DAO{
 					System.out.println(count);
 				}
 				if(count >= 5) {
-					return false;
+					return -1;
 				}
 			}
 			sql = "update noticeboard "+
@@ -803,7 +803,7 @@ public class SquareDAO extends DAO{
 			pstmt.setInt(7, dto.getBoard_show());
 			pstmt.setInt(8, dto.getBoard_no());
 			
-			result = pstmt.executeUpdate() == 1;
+			result = pstmt.executeUpdate();
 			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();

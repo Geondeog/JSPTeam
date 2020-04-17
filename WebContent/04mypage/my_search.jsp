@@ -64,7 +64,7 @@
 			<div class="col-xs-1 col-sm-2 col-md-2 "></div>
 			<div class="col-xs-10 col-sm-8 col-md-8 ">
 				<hr width="100%" class="title" />
-					<h2>정보광장 검색 리스트</h2>
+					<h2>나의 게시글 검색 리스트</h2>
 				<hr width="100%" class="title" />
 			</div>
 		</div>
